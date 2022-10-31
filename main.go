@@ -1,0 +1,2443 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
+
+	//"bytes"
+	"reflect"
+)
+
+func myReverse(s string) (result string) {
+	for _, v := range s {
+		result = string(v) + result
+	}
+	return
+}
+
+func myToCharArray(x string) []string {
+	arr := make([]string, len([]rune(x)), len([]rune(x)))
+	for i := 0; i < len([]rune(x)); i++ {
+		arr[i] = string(x[i])
+	}
+	return arr
+}
+
+func myCopyArrDblByte(arr1 [][]byte, pos1 int, arr2 [][]byte, pos2 int, count int) [][]byte {
+	var err error
+	if count > len(arr1) {
+		err = errors.New("count>len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([][]byte, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	if pos1 >= len(arr1) {
+		err = errors.New("pos1>=len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([][]byte, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	if pos2 >= len(arr2) {
+		err = errors.New("pos1>=len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([][]byte, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	k := 0
+	j := pos1
+	for i := pos2; i < len(arr2); i++ {
+		arr2[i] = arr1[j]
+		j++
+		k++
+		if k == count {
+			break
+		}
+	}
+	return arr2
+}
+
+func myCopyArrByte(arr1 []byte, pos1 int, arr2 []byte, pos2 int, count int) []byte {
+	var err error
+	if count > len(arr1) {
+		err = errors.New("count>len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]byte, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	if pos1 >= len(arr1) {
+		err = errors.New("pos1>=len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]byte, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	if pos2 >= len(arr2) {
+		err = errors.New("pos1>=len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]byte, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	k := 0
+	j := pos1
+	for i := pos2; i < len(arr2); i++ {
+		arr2[i] = arr1[j]
+		j++
+		k++
+		if k == count {
+			break
+		}
+	}
+	return arr2
+}
+
+func myCopyArrInt64(arr1 []int64, pos1 int, arr2 []int64, pos2 int, count int) []int64 {
+	var err error
+	if count > len(arr1) {
+		err = errors.New("count>len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]int64, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	if pos1 >= len(arr1) {
+		err = errors.New("pos1>=len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]int64, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	if pos2 >= len(arr2) {
+		err = errors.New("pos1>=len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]int64, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	k := 0
+	j := pos1
+	for i := pos2; i < len(arr2); i++ {
+		arr2[i] = arr1[j]
+		j++
+		k++
+		if k == count {
+			break
+		}
+	}
+	return arr2
+}
+
+func myCopyArrBool(arr1 []bool, pos1 int, arr2 []bool, pos2 int, count int) []bool {
+	var err error
+	if count > len(arr1) {
+		err = errors.New("count>len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]bool, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	if pos1 >= len(arr1) {
+		err = errors.New("pos1>=len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]bool, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	if pos2 >= len(arr2) {
+		err = errors.New("pos1>=len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]bool, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	k := 0
+	j := pos1
+	for i := pos2; i < len(arr2); i++ {
+		arr2[i] = arr1[j]
+		j++
+		k++
+		if k == count {
+			break
+		}
+	}
+	return arr2
+}
+
+func myCopyArrString(arr1 []string, pos1 int, arr2 []string, pos2 int, count int) []string {
+	var err error
+	if count > len(arr1) {
+		err = errors.New("count>len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]string, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	if pos1 >= len(arr1) {
+		err = errors.New("pos1>=len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]string, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	if pos2 >= len(arr2) {
+		err = errors.New("pos1>=len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]string, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	k := 0
+	j := pos1
+	for i := pos2; i < len(arr2); i++ {
+		arr2[i] = arr1[j]
+		j++
+		k++
+		if k == count {
+			break
+		}
+	}
+	return arr2
+}
+
+func myCopyArrInt(arr1 []int, pos1 int, arr2 []int, pos2 int, count int) []int {
+	var err error
+	if count > len(arr1) {
+		err = errors.New("count>len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]int, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	if pos1 >= len(arr1) {
+		err = errors.New("pos1>=len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]int, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	if pos2 >= len(arr2) {
+		err = errors.New("pos1>=len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]int, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	k := 0
+	j := pos1
+	for i := pos2; i < len(arr2); i++ {
+		arr2[i] = arr1[j]
+		j++
+		k++
+		if k == count {
+			break
+		}
+	}
+	return arr2
+}
+
+//////////////////////////////////////////Transmogrifier.clas////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////GrammarCache.class//////////////////////////////////////////////////////////////////////////////////
+type GrammarCache struct {
+	m_schema EXISchema
+	//  m_documentGrammar DocumentGrammar
+	m_fragmentGrammar Grammar
+	//  elementFragmentGrammar ElementFragmentGrammar
+	exiGrammars    []EXIGrammar
+	exiGrammarUses []EXIGrammarUse
+	grammarOptions int
+	// m_builtinElementGrammarTemplate BuiltinElementGrammar
+}
+
+func (g *GrammarCache) getEXISchema() EXISchema { //public EXISchema getEXISchema() {
+	return g.m_schema
+}
+func (g *GrammarCache) GrammarCache3(var1 EXISchema, var2 int) { //public GrammarCache(EXISchema var1, short var2) {
+	g.m_schema = var1                                      //this.m_schema = var1;
+	g.grammarOptions = var2                                //this.grammarOptions = var2;
+	if !(reflect.DeepEqual(g.m_schema, nilVAREXISchema)) { //if (this.m_schema != null) {
+		var var3 int = var1.getTotalGrammarCount()                                                         //int var3 = var1.getTotalGrammarCount();
+		g.exiGrammars = make([]EXIGrammar, var3, var3)                                                     //this.exiGrammars = new EXIGrammar[var3];
+		var var4 []int = g.m_schema.getElems()                                                             //int[] var4 = this.m_schema.getElems();
+		g.exiGrammarUses = make([]EXIGrammarUse, var1.getElemCountOfSchema(), var1.getElemCountOfSchema()) //this.exiGrammarUses = new EXIGrammarUse[var1.getElemCountOfSchema()];
+		var var6 int = 0                                                                                   //int var6 = 0;
+
+		var var5 int                             //int var5;
+		var var8 int                             //int var8;
+		for var5 = 0; var6 < len(var4); var5++ { //for(var5 = 0; var6 < var4.length; ++var5) {
+			var var7 int = var1.getTypeOfElem(var6) //int var7 = var1.getTypeOfElem(var6);
+			if var1.isSimpleType(var7) {            //var8 = var1.isSimpleType(var7) ? var7 : var1.getContentDatatypeOfComplexType(var7);
+				var8 = var7
+			} else {
+				var8 = var1.getContentDatatypeOfComplexType(var7)
+			}
+			IVAREXIGrammarUse := VAREXIGrammarUse
+			IVAREXIGrammarUse.EXIGrammarUse1(var8, g)  //!!!!!!!!!!!!!!!!!!!!!!
+			g.exiGrammarUses[var5] = IVAREXIGrammarUse //this.exiGrammarUses[var5] = new EXIGrammarUse(var8, this);
+			var6 = var6 + 4                            //var6 += 4;
+		}
+
+		var var14 []int = g.m_schema.getGrammars() //int[] var14 = this.m_schema.getGrammars();
+
+		var var9 int                                                                   //int var9;
+		for var8 = 0; var8 < len(var14); var8 = var8 + getSizeOfGrammar(var8, var14) { //for(var8 = 0; var8 < var14.length; var8 += EXISchema.getSizeOfGrammar(var8, var14)) {
+			var9 = var1.getSerialOfGrammar(var8) //var9 = var1.getSerialOfGrammar(var8);
+
+			//assert this.exiGrammars[var9] == null;
+
+			//g.exiGrammars[var9] = superEXIGrammar(g) //this.exiGrammars[var9] = new EXIGrammar(this);//super()!!!
+		}
+
+		for var8 = 0; var8 < len(var14); var8 += getSizeOfGrammar(var8, var14) { //for(var8 = 0; var8 < var14.length; var8 += EXISchema.getSizeOfGrammar(var8, var14)) {
+			var9 = var1.getSerialOfGrammar(var8)          //var9 = var1.getSerialOfGrammar(var8);
+			g.exiGrammars[var9].substantiate(var8, false) //this.exiGrammars[var9].substantiate(var8, false);
+		}
+
+		//EXIGrammar[] var15 = var2 == 1 ? new EXIGrammar[3 * var3] : null;
+		//var6 = 0;
+
+		//for(var5 = 0; var6 < var4.length; ++var5) {
+		//if (var2 == 1) {
+		//var9 = 0;
+		//if (var1.isNillableElement(var6)) {
+		//var9 |= 1;
+		//}
+
+		//if (var1.isTypableType(var1.getTypeOfElem(var6))) {
+		//var9 |= 2;
+		//}
+
+		//int var11 = var1.getSerialOfGrammar(var1.getGrammarOfType(var1.getTypeOfElem(var6)));
+		//EXIGrammar var10;
+		//if (var9 == 0) {
+		//var10 = this.exiGrammars[var11];
+		//} else {
+		///int var12 = var3 * (var9 - 1);
+		//int var13 = var12 + var11;
+		//if ((var10 = var15[var13]) == null) {
+		//var10 = new EXIGrammar(this);
+		//var10.substantiate(var6, true);
+		//var15[var13] = var10;
+		//}
+		//}
+
+		//assert var10 != null;
+
+		//this.exiGrammarUses[var5].exiGrammar = var10;
+		//} else {
+		//assert (var2 & 1) == 0;
+
+		//var9 = var1.getTypeOfElem(var6);
+		//this.exiGrammarUses[var5].exiGrammar = this.exiGrammars[var1.getSerialOfGrammar(var1.getGrammarOfType(var9))];
+		//}
+
+		//var6 += 4;
+		//}
+
+		//this.elementFragmentGrammar = new ElementFragmentGrammar(this);
+		//this.m_fragmentGrammar = new FragmentGrammar(this);
+	} else {
+		//this.elementFragmentGrammar = null;
+		//this.m_fragmentGrammar = new BuiltinFragmentGrammar(this);
+		//this.exiGrammars = null;
+		//this.exiGrammarUses = null;
+	}
+
+	//this.m_documentGrammar = new DocumentGrammar(this);
+	//this.m_builtinElementGrammarTemplate = new BuiltinElementGrammar("", this);
+}
+
+////////////////////EXISchema.class/////////////////////////
+/////////Characters.class////////
+type Characters struct { //public final class Characters {
+	isVolatile bool     //	public boolean isVolatile;
+	characters []string //	public char[] characters;
+	startIndex int      //	public int startIndex;
+	length     int      //	public final int length;
+	ucsCount   int      //	public final int ucsCount;
+	m_hashCode int      //	private final int m_hashCode;
+	//	public static final Characters CHARACTERS_EMPTY = new Characters("".toCharArray(), 0, 0, false);
+}
+
+var CHARACTERS_EMPTY Characters = Characters{
+	isVolatile: false,
+	characters: []string{""},
+	startIndex: 0,
+	length:     0,
+	ucsCount:   0,
+	m_hashCode: 0,
+}
+
+////to do  проверить на правельность заполнение!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+func (c *Characters) Characters1(var1 []string, var2 int, var3 int, var4 bool) Characters { //	public Characters(char[] var1, int var2, int var3, boolean var4) {
+	c.isVolatile = var4                    //	   this.isVolatile = var4;
+	c.characters = var1                    //	   this.characters = var1;
+	c.startIndex = var2                    //	   this.startIndex = var2;
+	c.length = var3                        //       this.length = var3;
+	var var5 int = 0                       //	   int var5 = 0;
+	var var6 int = c.startIndex + c.length //	   int var6 = this.startIndex + this.length;
+	var var7 int = 0                       //	   int var7 = 0;
+
+	for var8 := c.startIndex; var8 < var6; var7++ { // for(int var8 = this.startIndex; var8 < var6; ++var7) {
+
+		var var9 string = c.characters[var8] // char var9 = this.characters[var8++];
+		var8++
+		var99, err := strconv.Atoi(var9)
+		if err != nil {
+			panic(err)
+		} else {
+			var5 = (var5 * 31) + var99 // var5 = var5 * 31 + var9;
+			x, err := strconv.Atoi(var9)
+			if err != nil {
+				fmt.Println(err)
+			}
+			if (x&'\ufc00' /*[64512]*/) == 55296 && var8 < var6 { //  if ((var9 & '\ufc00') == 55296 && var8 < var6) {
+				var9 = c.characters[var8]
+				y, err := strconv.Atoi(var9) //			 var9 = this.characters[var8];
+				if err != nil {
+					fmt.Println(err)
+				}
+				if (y & '\ufc00' /*[64512]*/) == 56320 { //			 if ((var9 & '\ufc00') == 56320) {
+					var8++ //				++var8;
+				}
+			}
+		}
+	}
+
+	c.ucsCount = var7   // this.ucsCount = var7;
+	c.m_hashCode = var5 // this.m_hashCode = var5;
+	var result Characters = Characters{
+		isVolatile: var4,
+		characters: var1,
+		startIndex: var2,
+		length:     var3,
+		ucsCount:   var7,
+		m_hashCode: var5,
+	}
+	return result
+}
+
+/////////end Characters.class////////
+
+type EXISchema struct {
+	COOKIE                      []byte
+	NIL_NODE                    int
+	NIL_VALUE                   int
+	EMPTY_STRING                int
+	NIL_GRAM                    int
+	EVENT_AT_WILDCARD           int
+	EVENT_SE_WILDCARD           int
+	EVENT_CH_UNTYPED            int
+	EVENT_CH_TYPED              int
+	MIN_EVENT_ID                int
+	EVENT_TYPE_AT               byte
+	EVENT_TYPE_SE               byte
+	EVENT_TYPE_AT_WILDCARD_NS   byte
+	EVENT_TYPE_SE_WILDCARD_NS   byte
+	TRUE_VALUE                  int
+	FALSE_VALUE                 int
+	UNBOUNDED_OCCURS            int
+	CONSTRAINT_NONE             int
+	CONSTRAINT_DEFAULT          int
+	CONSTRAINT_FIXED            int
+	WHITESPACE_PRESERVE         int
+	WHITESPACE_REPLACE          int
+	WHITESPACE_COLLAPSE         int
+	VARIANT_STRING              byte
+	VARIANT_FLOAT               byte
+	VARIANT_DECIMAL             byte
+	VARIANT_INTEGER             byte
+	VARIANT_INT                 byte
+	VARIANT_LONG                byte
+	VARIANT_DATETIME            byte
+	VARIANT_DURATION            byte
+	VARIANT_BASE64              byte
+	VARIANT_BOOLEAN             byte
+	VARIANT_HEXBIN              byte
+	INTEGER_CODEC_DEFAULT       int
+	INTEGER_CODEC_NONNEGATIVE   int
+	ANCESTRY_IDS                []int //[]byte
+	ELEMENT_NAMES               []string
+	DEFAULT_TYPABLES            []bool
+	UR_SIMPLE_TYPE              byte
+	ATOMIC_SIMPLE_TYPE          byte
+	LIST_SIMPLE_TYPE            byte
+	UNION_SIMPLE_TYPE           byte
+	m_elems                     []int
+	m_attrs                     []int
+	m_types                     []int
+	uris                        []string
+	localNames                  [][]string
+	m_localNames                [][]int
+	m_names                     []string
+	m_strings                   []string
+	m_ints                      []int
+	m_mantissas                 []int
+	m_exponents                 []int
+	m_signs                     []bool
+	m_integralDigits            []string
+	m_reverseFractionalDigits   []string
+	m_integers                  []int //big.int
+	m_longs                     []int
+	m_datetimes                 []string //XSDateTime[]
+	m_durations                 []int64  //[]Duration
+	m_binaries                  [][]byte
+	m_variantTypes              []byte
+	m_variants                  []int
+	m_computedDatetimes         []string     //XSDateTime[]
+	m_variantCharacters         []Characters //string //[]Characters
+	m_n_stypes                  int
+	ancestryIds                 []int //[]byte
+	m_stypes_end                int
+	m_grammars                  []int
+	m_productions               []int
+	m_eventTypes                []byte
+	m_eventData                 []int
+	m_grammarCount              int
+	m_fragmentINodes            []int
+	m_n_fragmentElems           int
+	m_globalElementsDirectory   map[string][]int
+	m_globalAttributesDirectory map[string][]int
+	m_globalTypesDirectory      map[string][]int
+	m_buitinTypes               []int
+	m_globalElems               []int
+	m_globalAttrs               []int
+	//datatypeFactory             DatatypeFactory///to do
+}
+
+var VAREXISchema = EXISchema{
+	COOKIE:                    []byte{36, 51, 43, 45},
+	NIL_NODE:                  -1,
+	NIL_VALUE:                 -1,
+	EMPTY_STRING:              0,
+	NIL_GRAM:                  -1,
+	EVENT_AT_WILDCARD:         -1,
+	EVENT_SE_WILDCARD:         -2,
+	EVENT_CH_UNTYPED:          -3,
+	EVENT_CH_TYPED:            -4,
+	MIN_EVENT_ID:              -4,
+	EVENT_TYPE_AT:             0,
+	EVENT_TYPE_SE:             1,
+	EVENT_TYPE_AT_WILDCARD_NS: 2,
+	EVENT_TYPE_SE_WILDCARD_NS: 3,
+	TRUE_VALUE:                1,
+	FALSE_VALUE:               0,
+	UNBOUNDED_OCCURS:          -1,
+	CONSTRAINT_NONE:           0,
+	CONSTRAINT_DEFAULT:        1,
+	CONSTRAINT_FIXED:          2,
+	WHITESPACE_PRESERVE:       0,
+	WHITESPACE_REPLACE:        1,
+	WHITESPACE_COLLAPSE:       2,
+	VARIANT_STRING:            0,
+	VARIANT_FLOAT:             1,
+	VARIANT_DECIMAL:           2,
+	VARIANT_INTEGER:           3,
+	VARIANT_INT:               4,
+	VARIANT_LONG:              5,
+	VARIANT_DATETIME:          6,
+	VARIANT_DURATION:          7,
+	VARIANT_BASE64:            8,
+	VARIANT_BOOLEAN:           9,
+	VARIANT_HEXBIN:            10,
+	INTEGER_CODEC_DEFAULT:     255,
+	INTEGER_CODEC_NONNEGATIVE: 254,
+	ANCESTRY_IDS:              []int{-1, -1, 2, 3, 4, 5, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, -1, -1, 21}, //[]byte
+	ELEMENT_NAMES:             []string{"", "", "StringType", "BooleanType", "DecimalType", "FloatType", "FloatType", "DurationType", "DateTimeType", "TimeType", "DateType", "GYearMonthType", "GYearType", "GMonthDayType", "GDayType", "GMonthType", "HexBinaryType", "Base64BinaryType", "AnyURIType", "QNameType", "QNameType", "IntegerType"},
+	DEFAULT_TYPABLES:          []bool{true, true, true, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, false, true, false, true, true, false, true, false, true, true, true, true, false, true, true, false, false, false, false, false, false, false},
+	UR_SIMPLE_TYPE:            0,
+	ATOMIC_SIMPLE_TYPE:        1,
+	LIST_SIMPLE_TYPE:          2,
+	UNION_SIMPLE_TYPE:         3,
+}
+var nilVAREXISchema = EXISchema{
+	COOKIE:                      make([]byte, 0, 0),
+	NIL_NODE:                    0,
+	NIL_VALUE:                   0,
+	EMPTY_STRING:                0,
+	NIL_GRAM:                    0,
+	EVENT_AT_WILDCARD:           0,
+	EVENT_SE_WILDCARD:           0,
+	EVENT_CH_UNTYPED:            0,
+	EVENT_CH_TYPED:              0,
+	MIN_EVENT_ID:                0,
+	EVENT_TYPE_AT:               0,
+	EVENT_TYPE_SE:               0,
+	EVENT_TYPE_AT_WILDCARD_NS:   0,
+	EVENT_TYPE_SE_WILDCARD_NS:   0,
+	TRUE_VALUE:                  0,
+	FALSE_VALUE:                 0,
+	UNBOUNDED_OCCURS:            0,
+	CONSTRAINT_NONE:             0,
+	CONSTRAINT_DEFAULT:          0,
+	CONSTRAINT_FIXED:            0,
+	WHITESPACE_PRESERVE:         0,
+	WHITESPACE_REPLACE:          0,
+	WHITESPACE_COLLAPSE:         0,
+	VARIANT_STRING:              0,
+	VARIANT_FLOAT:               0,
+	VARIANT_DECIMAL:             0,
+	VARIANT_INTEGER:             0,
+	VARIANT_INT:                 0,
+	VARIANT_LONG:                0,
+	VARIANT_DATETIME:            0,
+	VARIANT_DURATION:            0,
+	VARIANT_BASE64:              0,
+	VARIANT_BOOLEAN:             0,
+	VARIANT_HEXBIN:              0,
+	INTEGER_CODEC_DEFAULT:       0,
+	INTEGER_CODEC_NONNEGATIVE:   0,
+	ANCESTRY_IDS:                make([]int, 0, 0), //[]byte
+	ELEMENT_NAMES:               make([]string, 0, 0),
+	DEFAULT_TYPABLES:            make([]bool, 0, 0),
+	UR_SIMPLE_TYPE:              0,
+	ATOMIC_SIMPLE_TYPE:          0,
+	LIST_SIMPLE_TYPE:            0,
+	UNION_SIMPLE_TYPE:           0,
+	m_elems:                     make([]int, 0, 0),
+	m_attrs:                     make([]int, 0, 0),
+	m_types:                     make([]int, 0, 0),
+	uris:                        make([]string, 0, 0),
+	localNames:                  make([][]string, 0, 0),
+	m_localNames:                make([][]int, 0, 0),
+	m_names:                     make([]string, 0, 0),
+	m_strings:                   make([]string, 0, 0),
+	m_ints:                      make([]int, 0, 0),
+	m_mantissas:                 make([]int, 0, 0),
+	m_exponents:                 make([]int, 0, 0),
+	m_signs:                     make([]bool, 0, 0),
+	m_integralDigits:            make([]string, 0, 0),
+	m_reverseFractionalDigits:   make([]string, 0, 0),
+	m_integers:                  make([]int, 0, 0), //big.int
+	m_longs:                     make([]int, 0, 0),
+	m_datetimes:                 make([]string, 0, 0), //XSDateTime[]
+	m_durations:                 make([]int64, 0, 0),  //[]Duration
+	m_binaries:                  make([][]byte, 0, 0),
+	m_variantTypes:              make([]byte, 0, 0),
+	m_variants:                  make([]int, 0, 0),
+	m_computedDatetimes:         make([]string, 0, 0),     //XSDateTime[]
+	m_variantCharacters:         make([]Characters, 0, 0), //string //[]Characters
+	m_n_stypes:                  0,
+	ancestryIds:                 make([]int, 0, 0), //[]byte
+	m_stypes_end:                0,
+	m_grammars:                  make([]int, 0, 0),
+	m_productions:               make([]int, 0, 0),
+	m_eventTypes:                make([]byte, 0, 0),
+	m_eventData:                 make([]int, 0, 0),
+	m_grammarCount:              0,
+	m_fragmentINodes:            make([]int, 0, 0),
+	m_n_fragmentElems:           0,
+	m_globalElementsDirectory:   make(map[string][]int),
+	m_globalAttributesDirectory: make(map[string][]int),
+	m_globalTypesDirectory:      make(map[string][]int),
+	m_buitinTypes:               make([]int, 0, 0),
+	m_globalElems:               make([]int, 0, 0),
+	m_globalAttrs:               make([]int, 0, 0),
+	//datatypeFactory    :         DatatypeFactory///to do
+}
+
+func (e *EXISchema) getProductionCountOfGrammar(var1 int) int { //public int getProductionCountOfGrammar(int var1) {
+	return _getProductionCountOfGrammar(var1, e.m_grammars) //return _getProductionCountOfGrammar(var1, this.m_grammars);
+}
+
+func (e *EXISchema) getContentGrammarOfGrammar(var1 int) int { //public int getContentGrammarOfGrammar(int var1) {
+	return _getContentGrammarOfGrammar(var1, e.m_grammars)
+}
+
+func _getContentGrammarOfGrammar(var0 int, var1 []int) int { //public static int _getContentGrammarOfGrammar(int var0, int[] var1) {
+	if _hasContentGrammar(var0, var1) {
+		return var1[var0+2]
+	} else {
+		return -1
+	}
+
+	//return _hasContentGrammar(var0, var1) ? var1[var0 + 2] : -1;
+}
+
+func (e *EXISchema) getGrammarOfType(var1 int) int { //public int getGrammarOfType(int var1) {
+	if 0 > var1 { //assert 0 <= var1;
+		panic("EXISchema.class, func getGrammarOfType, 0 > var1")
+	}
+	return e.m_types[var1+4] //return this.m_types[var1 + 4];
+}
+
+func (e *EXISchema) getSerialOfGrammar(var1 int) int { //public int getSerialOfGrammar(int var1) {
+	return e.m_grammars[var1+0]
+}
+
+func getSizeOfGrammar(var0 int, var1 []int) int { //public static int getSizeOfGrammar(int var0, int[] var1) {
+	var var2 int = 2                    //int var2 = 2;
+	if _hasContentGrammar(var0, var1) { //if (_hasContentGrammar(var0, var1)) {
+		var2++                            //++var2;
+		if _hasEmptyGrammar(var0, var1) { //if (_hasEmptyGrammar(var0, var1)) {
+			var2++ //++var2;
+		}
+	}
+
+	return var2 + _getProductionCountOfGrammar(var0, var1)
+}
+
+func _getProductionCountOfGrammar(var0 int, var1 []int) int { //public static int _getProductionCountOfGrammar(int var0, int[] var1) {
+	return var1[var0+1] & '\uffff' //return var1[var0 + 1] & '\uffff'
+}
+
+func _hasContentGrammar(var0 int, var1 []int) bool { //public static boolean _hasContentGrammar(int var0, int[] var1) {
+	return (var1[var0+1] & 131072) != 0
+}
+
+func _hasEmptyGrammar(var0 int, var1 []int) bool { //public static boolean _hasEmptyGrammar(int var0, int[] var1) {
+	var var2 bool = (var1[var0+1] & 262144) != 0 //boolean var2 = (var1[var0 + 1] & 262144) != 0;
+
+	if var2 || !_hasContentGrammar(var0, var1) { //assert !var2 || _hasContentGrammar(var0, var1);
+		panic("EXISchema.class, func  _hasEmptyGrammar, var2 || !_hasContentGrammar(var0, var1)")
+	}
+	return var2
+}
+
+func (e *EXISchema) getGrammars() []int { //public int[] getGrammars() {
+	return e.m_grammars
+}
+
+func (e *EXISchema) getTotalGrammarCount() int { //public int getTotalGrammarCount() {
+	return e.m_grammarCount
+}
+
+func (e *EXISchema) EXISchema(var1 []int, var2 int, var3 []int, var4 int, var5 []int, var6 int, var7 []string, var8 int, var9 []string, var10 int, var11 [][]int, var12 []string, var13 int, var14 []int, var15 int, var16 []int, var17 []int, var18 int, var19 []bool, var20 []string, var21 []string, var22 int, var23 []int /*big.int*/, var24 int, var25 []int, var26 int, var27 []string /*[]XSDateTime*/, var28 int, var29 []int64 /*[]Duration*/, var30 int, var31 [][]byte, var32 int, var33 []byte, var34 []int, var35 int, var36 []int, var37 int, var38 int, var39 []int, var40 int, var41 []byte, var42 []int, var43 int, var44 int) {
+	e.m_elems = make([]int, var2, var2)
+	copy(myCopyArrInt(var1, 0, e.m_elems, 0, var2), e.m_elems) //copy(e.m_elems, var1) //System.arraycopy(var1, 0, this.m_elems, 0, var2);
+
+	e.m_attrs = make([]int, var4, var4)
+	copy(myCopyArrInt(var3, 0, e.m_attrs, 0, var4), e.m_attrs) //copy(e.m_attrs, var3) //System.arraycopy(var3, 0, this.m_attrs, 0, var4);
+
+	e.m_types = make([]int, var6, var6)
+	copy(myCopyArrInt(var5, 0, e.m_types, 0, var6), e.m_types) //copy(e.m_types, var5) //System.arraycopy(var5, 0, this.m_types, 0, var6);
+
+	e.uris = make([]string, var8, var8)
+	copy(myCopyArrString(var7, 0, e.uris, 0, var8), e.uris) //copy(e.uris, var7)    //System.arraycopy(var7, 0, this.uris, 0, var8);
+
+	e.m_localNames = make([][]int, len(var11), len(var11)) //this.m_localNames = new int[var11.length][];
+	copy(e.m_localNames, var11)                            /*
+										for(int var45 = 0; var45 < var11.length; ++var45) {
+		        							this.m_localNames[var45] = new int[var11[var45].length];
+		         							System.arraycopy(var11[var45], 0, this.m_localNames[var45], 0, var11[var45].length);
+		      							}
+	*/
+
+	e.m_names = make([]string, var10, var10)
+	copy(myCopyArrString(var9, 0, e.m_names, 0, var10), e.m_names) //copy(e.m_names, var9)    //System.arraycopy(var9, 0, this.m_names, 0, var10);
+
+	e.m_strings = make([]string, var13, var13)                          // String[var13];
+	copy(myCopyArrString(var12, 0, e.m_strings, 0, var13), e.m_strings) //copy(e.m_strings, var12) //System.arraycopy(var12, 0, this.m_strings, 0, var13);
+
+	e.m_ints = make([]int, var15, var15)                       //int[var15];
+	copy(myCopyArrInt(var14, 0, e.m_ints, 0, var15), e.m_ints) //copy(e.m_ints, var14)    //System.arraycopy(var14, 0, this.m_ints, 0, var15);
+
+	e.m_mantissas = make([]int, var18, var18)                            //long[var18];
+	copy(myCopyArrInt(var16, 0, e.m_mantissas, 0, var18), e.m_mantissas) //copy(e.m_mantissas, var16) //System.arraycopy(var16, 0, this.m_mantissas, 0, var18);
+
+	e.m_exponents = make([]int, var18, var18)                            //int[var18];
+	copy(myCopyArrInt(var17, 0, e.m_exponents, 0, var18), e.m_exponents) //copy(e.m_exponents, var17) //System.arraycopy(var17, 0, this.m_exponents, 0, var18);
+
+	e.m_signs = make([]bool, var22, var22)                        //boolean[var22];
+	copy(myCopyArrBool(var19, 0, e.m_signs, 0, var22), e.m_signs) //copy(e.m_signs, var19)      //System.arraycopy(var19, 0, this.m_signs, 0, var22);
+
+	e.m_integralDigits = make([]string, var22, var22)                                 //String[var22];
+	copy(myCopyArrString(var20, 0, e.m_integralDigits, 0, var22), e.m_integralDigits) //copy(e.m_integralDigits, var20) //System.arraycopy(var20, 0, this.m_integralDigits, 0, var22);
+
+	e.m_reverseFractionalDigits = make([]string, var22, var22)                                          //String[var22];
+	copy(myCopyArrString(var21, 0, e.m_reverseFractionalDigits, 0, var22), e.m_reverseFractionalDigits) //copy(e.m_reverseFractionalDigits, var21) //System.arraycopy(var21, 0, this.m_reverseFractionalDigits, 0, var22);
+
+	e.m_integers = make([]int /*big.int*/, var24, var24)               //BigInteger[var24];
+	copy(myCopyArrInt(var23, 0, e.m_integers, 0, var24), e.m_integers) //copy(e.m_integers, var23)  //System.arraycopy(var23, 0, this.m_integers, 0, var24);
+
+	e.m_longs = make([]int, var26, var26)                        //long[var26];
+	copy(myCopyArrInt(var25, 0, e.m_longs, 0, var26), e.m_longs) //copy(e.m_longs, var25)     //System.arraycopy(var25, 0, this.m_longs, 0, var26);
+
+	e.m_datetimes = make([]string /*XSDateTime*/, var28, var28)             //new XSDateTime[var28];
+	copy(myCopyArrString(var27, 0, e.m_datetimes, 0, var28), e.m_datetimes) //copy(e.m_datetimes, var27) //System.arraycopy(var27, 0, this.m_datetimes, 0, var28);
+
+	e.m_durations = make([]int64 /*Duration*/, var30, var30)               //Duration[var30];
+	copy(myCopyArrInt64(var29, 0, e.m_durations, 0, var30), e.m_durations) //copy(e.m_durations, var29) //System.arraycopy(var29, 0, this.m_durations, 0, var30);
+
+	e.m_binaries = make([][]byte, var32, var32)                            //byte[var32][];
+	copy(myCopyArrDblByte(var31, 0, e.m_binaries, 0, var32), e.m_binaries) //copy(e.m_binaries, var31)   //System.arraycopy(var31, 0, this.m_binaries, 0, var32);
+
+	e.m_variants = make([]int, var35, var35)                           //int[var35];
+	copy(myCopyArrInt(var34, 0, e.m_variants, 0, var35), e.m_variants) //copy(e.m_variants, var34)   //System.arraycopy(var34, 0, this.m_variants, 0, var35);
+
+	e.m_variantTypes = make([]byte, var35, var35)                               //byte[var35];
+	copy(myCopyArrByte(var33, 0, e.m_variantTypes, 0, var35), e.m_variantTypes) //copy(e.m_variantTypes, var33) //System.arraycopy(var33, 0, this.m_variantTypes, 0, var35);
+
+	e.m_grammars = make([]int, var37, var37)                           //int[var37];
+	copy(myCopyArrInt(var36, 0, e.m_grammars, 0, var37), e.m_grammars) //copy(e.m_grammars, var36)    //System.arraycopy(var36, 0, this.m_grammars, 0, var37);
+
+	e.m_productions = make([]int, var40, var40)                              //int[var40];
+	copy(myCopyArrInt(var39, 0, e.m_productions, 0, var40), e.m_productions) //copy(e.m_productions, var39) //System.arraycopy(var39, 0, this.m_productions, 0, var40);
+
+	e.m_eventTypes = make([]byte, var43)                                    //byte[var43];
+	copy(myCopyArrByte(var41, 0, e.m_eventTypes, 0, var43), e.m_eventTypes) //copy(e.m_eventTypes, var41)  //System.arraycopy(var41, 0, this.m_eventTypes, 0, var43);
+
+	e.m_eventData = make([]int, var43, var43)                            //int[var43];
+	copy(myCopyArrInt(var42, 0, e.m_eventData, 0, var43), e.m_eventData) //copy(e.m_eventData, var42)   //System.arraycopy(var42, 0, this.m_eventData, 0, var43);
+
+	e.m_n_stypes = var44
+	e.m_grammarCount = var38
+	e.setUp()
+}
+
+func (e *EXISchema) setUp() {
+	e.computeAncestryIds()
+	e.populateLocalNames()
+	e.computeGlobalDirectory()
+	e.computeVariantCharacters()
+	e.computeDateTimes()
+	e.buildFragmentsArray()
+}
+
+func (e *EXISchema) buildFragmentsArray() { //private void buildFragmentsArray() {
+	var var6 []int             //ArrayList var6 = new ArrayList();
+	var var3 int = -1          //int var3 = -1;
+	var var2 int = -1          //int var2 = -1;
+	var var4 int = -2147483648 /*0x80000000*/ //Integer.MIN_VALUE //int var4 = Integer.MIN_VALUE;
+	var var5 bool = true       //boolean var5 = true;
+
+	var var1 int                                           //int var1;
+	var var8 int                                           //int var8;
+	var var9 int                                           //int var9;
+	for var1 = 0; var1 < len(e.m_elems); var1 = var1 + 4 { //for(var1 = 0; var1 < this.m_elems.length; var1 += 4) {
+		var8 = e.m_elems[var1+1]          //var8 = this.m_elems[var1 + 1];
+		var9 = e.m_elems[var1+0]          //var9 = this.m_elems[var1 + 0];
+		if var2 == var8 && var3 == var9 { //if (var2 == var8 && var3 == var9) {
+			if var4 == var1 && var8 != var2 && var9 != var3 { //assert var4 != var1 && var8 == var2 && var9 == var3;
+				panic("EXISchema.class, func  buildFragmentsArray, var4 == var1 && var8 != var2 && var9 != var3")
+			}
+			if e.getTypeOfElem(var1) != e.getTypeOfElem(var4) || e.isNillableElement(var1) != e.isNillableElement(var4) { // if (this.getTypeOfElem(var1) != this.getTypeOfElem(var4) || this.isNillableElement(var1) != this.isNillableElement(var4)) {
+				var5 = false //var5 = false;
+			}
+		} else {
+			if var1 != 0 { //if (var1 != 0) {
+				if var5 { //var6.add(var5 ? var4 : 0 - var4 - 1);
+					var6 = append(var6, var4)
+				} else {
+					var6 = append(var6, (0 - var4 - 1))
+				}
+			}
+
+			var4 = var1 //var4 = var1;
+			var5 = true //var5 = true;
+			var2 = var8 //var2 = var8;
+			var3 = var9 //var3 = var9;
+		}
+	}
+
+	if var1 != 0 { //if (var1 != 0) {
+		if var5 {
+			var6 = append(var6, var4) //var6.add(var5 ? var4 : 0 - var4 - 1);
+		} else {
+			var6 = append(var6, (0 - var4 - 1))
+		}
+	}
+
+	var var7 []int     //ArrayList var7 = new ArrayList();
+	var3 = -1          //var3 = -1;
+	var2 = -1          //var2 = -1;
+	var4 = -2147483648 /*0x80000000*/ //Integer.MIN_VALUE //var4 = Integer.MIN_VALUE;
+	var5 = true        //var5 = true;
+
+	for var1 = 0; var1 < len(e.m_attrs); var1 = var1 + 3 { //for(var1 = 0; var1 < this.m_attrs.length; var1 += 3) {
+		var9 = e.m_attrs[var1+1]           //var9 = this.m_attrs[var1 + 1];
+		var var10 int = e.m_attrs[var1+0]  //int var10 = this.m_attrs[var1 + 0];
+		if var2 == var9 && var3 == var10 { //if (var2 == var9 && var3 == var10) {
+			if var4 == var1 && var9 != var2 && var10 != var3 { //assert var4 != var1 && var9 == var2 && var10 == var3;
+				panic("EXISchema.class, func  buildFragmentsArray, var4 == var1 && var9 != var2 && var10 != var3")
+			}
+			if e.getTypeOfAttr(var1) != e.getTypeOfAttr(var4) { //if (this.getTypeOfAttr(var1) != this.getTypeOfAttr(var4)) {
+				var5 = false //var5 = false;
+			}
+		} else {
+			if var1 != 0 { //if (var1 != 0) {
+				if var5 { //var7.add(var5 ? var4 : 0 - var4 - 1);
+					var7 = append(var7, var4)
+				} else {
+					var7 = append(var7, (0 - var4 - 1))
+				}
+			}
+
+			var4 = var1  //var4 = var1;
+			var5 = true  //var5 = true;
+			var2 = var9  //var2 = var9;
+			var3 = var10 //var3 = var10;
+		}
+	}
+
+	if var1 != 0 { //if (var1 != 0) {
+		if var5 { //var7.add(var5 ? var4 : 0 - var4 - 1);
+			var7 = append(var7, var4)
+		} else {
+			var7 = append(var7, (0 - var4 - 1))
+		}
+	}
+
+	var8 = 0                                                                                       //var8 = 0;
+	e.m_n_fragmentElems = len(var6)                                                                //this.m_n_fragmentElems = var6.size();
+	e.m_fragmentINodes = make([]int, e.m_n_fragmentElems+len(var7), e.m_n_fragmentElems+len(var7)) //this.m_fragmentINodes = new int[this.m_n_fragmentElems + var7.size()];
+
+	//var var11 Iterator //Iterator var11;
+	for _, elem := range var6 { //for(var11 = var6.iterator(); var11.hasNext(); this.m_fragmentINodes[var8++] = (Integer)var11.next()) {
+		e.m_fragmentINodes[var8] = elem
+		var8++
+	}
+
+	if var8 != e.m_n_fragmentElems { //assert var8 == this.m_n_fragmentElems;
+		panic("EXISchema.class, func  buildFragmentsArray, var8 != e.m_n_fragmentElems")
+	}
+
+	for _, elem := range var7 { //for(var11 = var7.iterator(); var11.hasNext(); this.m_fragmentINodes[var8++] = (Integer)var11.next()) {
+		e.m_fragmentINodes[var8] = elem
+		var8++
+	}
+
+}
+
+func (e *EXISchema) getContentDatatypeOfComplexType(var1 int) int { //public int getContentDatatypeOfComplexType(int var1) {
+	if 0 > var1 && e.m_types[var1+5] < 0 { //assert 0 <= var1 && this.m_types[var1 + 5] >= 0;
+		panic("EXISchema.class, func getContentDatatypeOfComplexType, 0 > var1 && e.m_types[var1 + 5] < 0 ")
+	}
+	var var2 int                //int var2;
+	if e.m_types[var1+5] != 0 { //return (var2 = this.m_types[var1 + 5]) != 0 ? var2 : -1;
+		var2 = var2
+	} else {
+		var2 = (-1)
+	}
+	return var2
+}
+
+func (e *EXISchema) getElemCountOfSchema() int { //public int getElemCountOfSchema() {
+	return len(e.m_elems) / 4
+}
+
+func (e *EXISchema) computeDateTimes() { //private void computeDateTimes() {
+	var var1 int = len(e.m_datetimes)                               //int var1 = this.m_datetimes.length;
+	var var2 []string = /*XSDateTime[]*/ make([]string, var1, var1) //XSDateTime[] var2 = new XSDateTime[var1];
+
+	for var3 := 0; var3 < var1; var3++ { //for(int var3 = 0; var3 < var1; ++var3) {
+		var var4 string //XSDateTime var4;
+		var4 = e.m_datetimes[var3]
+		var2[var3] = var4 //var2[var3] = var4 = new XSDateTime(this.m_datetimes[var3]);
+		//var4.normalize();
+	}
+
+	e.m_computedDatetimes = var2 //this.m_computedDatetimes = var2;
+}
+
+func (e *EXISchema) computeAncestryIds() {
+	e.ancestryIds = make([]int, e.m_n_stypes+1, e.m_n_stypes+1)
+	e.ancestryIds[0] = -1
+	var var1 int = 6
+	for var2 := 0; var2 < e.m_n_stypes; var1 += _getTypeSize(var1, e.m_types, e.ancestryIds) { //for(int var2 = 0; var2 < this.m_n_stypes; var1 += _getTypeSize(var1, this.m_types, this.ancestryIds)) {
+		var var3 int = e.getSerialOfType(var1) //	int var3 = this.getSerialOfType(var1);
+
+		if 0 >= var3 && var3 > e.m_n_stypes && e.isSimpleType(var1) { //	assert 0 < var3 && var3 <= this.m_n_stypes && this.isSimpleType(var1);
+			panic("EXISchema.class, func computeAncestryIds, 0 >= var3 && var3 > e.m_n_stypes && e.isSimpleType(var1)")
+		}
+		var2++
+		var var4 int                             //byte
+		if e.getVarietyOfSimpleType(var1) == 1 { //	if (this.getVarietyOfSimpleType(var1) == 1) {
+			var var6 int //	   int var6;
+
+			var var5 int                   //
+			var6 = e.getSerialOfType(var5) //
+
+			for var5 = var1; var6 >= 22; var5 = e.getBaseTypeOfSimpleType(var5) {
+			} //for(int var5 = var1; (var6 = this.getSerialOfType(var5)) >= 22; var5 = this.getBaseTypeOfSimpleType(var5)) {
+
+			if var6 < 2 { //	   assert var6 >= 2;
+				panic("EXISchema.class, func computeAncestryIds, var6 < 2")
+			}
+			var4 = VAREXISchema.ANCESTRY_IDS[var6]
+		} else {
+			var4 = -1
+		}
+
+		e.ancestryIds[var3] = var4
+	}
+
+}
+
+//todo мaccив проверить на коректность заполнения !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+func (e *EXISchema) populateLocalNames() { //   private void populateLocalNames() {
+	e.localNames = make([][]string, len(e.m_localNames), len(e.m_localNames)) //	this.localNames = new String[this.m_localNames.length][];
+	for var1 := 0; var1 < len(e.m_localNames); var1++ {                       //	for(int var1 = 0; var1 < this.m_localNames.length; ++var1) {
+		var var2 []string = make([]string, len(e.m_localNames[var1]), len(e.m_localNames[var1])) //String[] var2 = new String[this.m_localNames[var1].length];
+		/*
+					for(int var3 = 0; var3 < var2.length; ++var3) {
+			            var2[var3] = this.m_names[this.m_localNames[var1][var3]];
+			         }
+		*/
+		for var3 := 0; var3 < len(var2); var3++ {
+			var2[var3] = e.m_names[e.m_localNames[var1][var3]]
+		}
+		//copy(var2, (e.m_names[e.m_localNames[var1]]))
+		//copy(var2, e.m_names)
+		e.localNames[var1] = var2 //var2[var3] = this.m_names[this.m_localNames[var1][var3]];
+	}
+}
+
+//todo-проверить правельность заполнение массива/мапы!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+func (e *EXISchema) computeGlobalDirectory() { //private void computeGlobalDirectory() {
+	e.m_globalElementsDirectory = make(map[string][]int)   //this.m_globalElementsDirectory = new HashMap();
+	e.m_globalAttributesDirectory = make(map[string][]int) //this.m_globalAttributesDirectory = new HashMap();
+	e.m_globalTypesDirectory = make(map[string][]int)      ///this.m_globalTypesDirectory = new HashMap();
+	var var1 []int                                         //ArrayList var1 = new ArrayList();
+
+	var var2 int                                     //int var2;
+	for var2 = 0; var2 < len(e.m_elems); var2 += 4 { //for(var2 = 0; var2 < this.m_elems.length; var2 += 4) {
+		if e.isGlobalElem(var2) { // if (this.isGlobalElem(var2)) {
+			var var3 string = e.getNameOfElem(var2)                       //String var3 = this.getNameOfElem(var2);
+			var var4 []int                                                //int[] var4;
+			if value, inMap := e.m_globalElementsDirectory[var3]; inMap { //if ((var4 = (int[])this.m_globalElementsDirectory.get(var3)) != null) {
+				//myValue := make([]int, 1, 1)
+				//myValue[0] = value //какова длинна массива!!!???!!!????!!!?!?!?!?!?!?!??!?!?!?!?
+				var4 = value
+				var5 := make([]int, len(var4)+1, len(var4)+1) //int[] var5 = new int[var4.length + 1];
+				copy(var5, var4)                              //System.arraycopy(var4, 0, var5, 0, var4.length);
+				var5[len(var4)] = var2                        //var5[var4.length] = var2;
+				var4 = var5                                   //var4 = var5;
+			} else {
+				var4 = []int{var2} //var4 = new int[]{var2};
+			}
+
+			e.m_globalElementsDirectory[var3] = var4 //this.m_globalElementsDirectory.put(var3, var4);
+			var1 = append(var1, var2)                //var1.add(var2);
+		}
+	}
+
+	e.m_globalElems = make([]int, len(var1), len(var1)) //this.m_globalElems = new int[var1.size()];
+
+	if len(e.m_globalElems) != e.getGlobalElemCountOfSchema() { //assert this.m_globalElems.length == this.getGlobalElemCountOfSchema();//зачем это!!!?????????????????????????????
+		panic("EXISchema.class, func computeGlobalDirectory, len(e.m_globalElems) != e.getGlobalElemCountOfSchema()")
+	}
+	for var2 = 0; var2 < len(e.m_globalElems); var2++ { //for(var2 = 0; var2 < this.m_globalElems.length; ++var2) {
+		e.m_globalElems[var2] = int(var1[var2]) //this.m_globalElems[var2] = (Integer)var1.get(var2);
+	}
+
+	var var9 []int //ArrayList var9 = new ArrayList();
+
+	var var7 []int                                      //int[] var7;
+	var var10 int                                       //int var10;
+	var var11 int                                       //int var11;
+	for var10 = 0; var10 < len(e.m_attrs); var10 += 3 { //for(var10 = 0; var10 < this.m_attrs.length; var10 += 3) {
+		if e.isGlobalAttr(var10) { //if (this.isGlobalAttr(var10)) {
+			var11 = e.m_attrs[var10+0]                                //var11 = this.m_attrs[var10 + 0];
+			var var12 int = e.m_attrs[10+1]                           //int var12 = this.m_attrs[var10 + 1];
+			var var6 string = e.m_names[e.m_localNames[var12][var11]] //String var6 = this.m_names[this.m_localNames[var12][var11]];
+
+			if value, inMap := e.m_globalAttributesDirectory[var6]; inMap { //if ((var7 = (int[])this.m_globalAttributesDirectory.get(var6)) != null) {
+				var7 = value
+				var var8 []int = make([]int, len(var7)+1, len(var7)+1) //int[] var8 = new int[var7.length + 1];
+				copy(var8, var7)                                       //System.arraycopy(var7, 0, var8, 0, var7.length);
+				var8[len(var7)] = var10                                //var8[var7.length] = var10;
+				var7 = var8                                            //var7 = var8;
+			} else { //} else {
+				var7 = []int{var10} //var7 = new int[]{var10};
+			}
+
+			e.m_globalAttributesDirectory[var6] = var7 //this.m_globalAttributesDirectory.put(var6, var7);
+			var9 = append(var9, var10)                 //var9.add(var10);
+		}
+	}
+
+	e.m_globalAttrs = make([]int, len(var9), len(var9)) //this.m_globalAttrs = new int[var9.size()];
+
+	for var10 = 0; var10 < len(e.m_globalAttrs); var10++ { //for(var10 = 0; var10 < this.m_globalAttrs.length; ++var10) {
+		e.m_globalAttrs[var10] = int(var9[var10]) //this.m_globalAttrs[var10] = (Integer)var9.get(var10);
+	}
+
+	e.m_buitinTypes = make([]int, 46, 46) //this.m_buitinTypes = new int[46];
+	var10 = 0                             //var10 = 0;
+
+	for var11 = 0; var10 < len(e.m_types); var11++ { //for(var11 = 0; var10 < this.m_types.length; ++var11) {
+		var var13 string = e.getNameOfType(var10) //String var13 = this.getNameOfType(var10);
+		if var11 < 46 {                           //if (var11 < 46) {
+			if e.getUriOfType(var10) == 3 && len(([]rune(var13))) != 0 { //assert this.getUriOfType(var10) == 3 && var13.length() != 0;//add []rune
+				panic("EXISchema.class, func computeGlobalDirectory, e.getUriOfType(var10) == 3 && len(([]rune(var13))) != 0 ")
+			}
+			e.m_buitinTypes[var11] = var10 //this.m_buitinTypes[var11] = var10;
+		}
+
+		if !("" == var13) { //if (!"".equals(var13)) {
+			var var14 []int                                             //int[] var14;
+			if value, inMap := e.m_globalTypesDirectory[var13]; inMap { //if ((var14 = (int[])this.m_globalTypesDirectory.get(var13)) != null) {
+				var14 = value
+				var7 = make([]int, len(var14)+1, len(var14)+1) //var7 = new int[var14.length + 1];
+				copy(var7, var14)                              //System.arraycopy(var14, 0, var7, 0, var14.length);
+				var7[len(var14)] = var10                       //var7[var14.length] = var10;
+				var14 = var7                                   //var14 = var7;
+			} else {
+				var14 = []int{var10} //var14 = new int[]{var10};
+			}
+
+			e.m_globalAttributesDirectory[var13] = var14 //this.m_globalTypesDirectory.put(var13, var14);
+		}
+
+		var10 += _getTypeSize(var10, e.m_types, e.ancestryIds) //var10 += _getTypeSize(var10, this.m_types, this.ancestryIds);
+	}
+
+}
+
+func (e *EXISchema) computeVariantCharacters() { //private void computeVariantCharacters() {
+	var var1 int = len(e.m_variants)                                  //int var1 = this.m_variants.length;
+	var var2 []Characters = /*string*/ make([]Characters, var1, var1) //Characters[] var2 = new Characters[var1];
+
+	for var3 := 0; var3 < var1; var3++ {
+		var var4 string = e.computeVariantCharacters1(var3)                                           //String var4 = this.computeVariantCharacters(var3);
+		var2[var3] = CHARACTERS_EMPTY.Characters1(myToCharArray(var4), 0, len(([]rune(var4))), false) //var2[var3] = new Characters(var4.toCharArray(), 0, var4.length(), false); //add []rune
+	}
+
+	e.m_variantCharacters = var2 //this.m_variantCharacters = var2;
+}
+
+func (e *EXISchema) computeVariantCharacters1(var1 int) string { //private String computeVariantCharacters(int var1) {
+	var var2 string = ""            //String var2 = "";
+	var var3 []byte                 //byte[] var3;
+	switch e.m_variantTypes[var1] { //switch(this.m_variantTypes[var1]) {
+	case 0: //case 0:
+		var2 = e.getStringValueOfVariant(var1) //var2 = this.getStringValueOfVariant(var1);
+		//break;
+	case 1: //case 1:
+		var var4 int = e.m_variants[var1]  //int var4 = this.m_variants[var1];
+		var var5 int = e.m_mantissas[var4] //long var5 = this.m_mantissas[var4];
+		var var7 int                       //int var7;
+		if e.m_exponents[var4] != 0 {      //if ((var7 = this.m_exponents[var4]) != 0) {
+			var7 = e.m_exponents[var4]
+			if var7 == -16384 { //if (var7 == -16384) {
+				if var5 == int(1) { //var2 = var5 == 1L ? "INF" : (var5 == -1L ? "-INF" : "NaN");
+					var2 = "INF"
+				} else if var5 == int(-1) {
+					var2 = "-INF"
+				} else {
+					var2 = "NaN"
+				}
+			} else {
+				var2 = strconv.Itoa(var5) + "E" + strconv.Itoa(var7) //var2 = Long.toString(var5) + "E" + Integer.toString(var7);//
+			}
+		} else {
+			var2 = strconv.Itoa(var5) //var2 = Long.toString(var5);
+		}
+		//break;
+	case 2: //case 2:
+		var var8 bool = e.getSignOfDecimalVariant(var1)                                  //boolean var8 = this.getSignOfDecimalVariant(var1);
+		var var9 string = e.getIntegralDigitsOfDecimalVariant(var1)                      //String var9 = this.getIntegralDigitsOfDecimalVariant(var1);
+		var var10 string = myReverse(e.getReverseFractionalDigitsOfDecimalVariant(var1)) //String var10 = (new StringBuilder(this.getReverseFractionalDigitsOfDecimalVariant(var1))).reverse().toString();
+		var var11 bool                                                                   //boolean var11;
+		if "0" == (var10) && "0" == (var9) {                                             //if ((var11 = "0".equals(var10)) && "0".equals(var9)) {
+			var11 = ("0" == (var10))
+			var2 = "0" //var2 = "0";
+		} else {
+			var11 = ("0" == (var10)) //my add!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			if var8 {                //if (var8) {
+				var2 = var2 + `-` //var2 = var2 + '-';
+			}
+
+			var2 = var2 + var9 //var2 = var2 + var9;
+			if !var11 {        //if (!var11) {
+				var2 = var2 + `.`   //var2 = var2 + '.';
+				var2 = var2 + var10 //var2 = var2 + var10;
+			}
+		}
+		//break;
+	case 3: //case 3:
+		var var12 int = /*BigInteger*/ e.getIntegerValueOfVariant(var1) //BigInteger var12 = this.getIntegerValueOfVariant(var1);
+		var2 = strconv.Itoa(var12)                                      //var2 = var12.toString();
+		//break;
+	case 4: //case 4:
+		var var13 int = e.getIntValueOfVariant(var1) //int var13 = this.getIntValueOfVariant(var1);
+		var2 = strconv.Itoa(var13)                   //var2 = Integer.toString(var13);
+		//break;
+	case 5: //case 5:
+		var var14 int = e.getLongValueOfVariant(var1) //long var14 = this.getLongValueOfVariant(var1);
+		var2 = strconv.Itoa(var14)                    //var2 = Long.toString(var14);
+		//break;
+	case 6: //case 6:
+		var var16 string = /*XSDateTime*/ e.getDateTimeValueOfVariant(var1) //XSDateTime var16 = this.getDateTimeValueOfVariant(var1);
+		var2 = var16                                                        //var2 = var16.toString();
+		//break;
+	case 7: //case 7:
+		var2 = strconv.Itoa(int(e.getDurationValueOfVariant(var1))) //var2 = this.getDurationValueOfVariant(var1).toString();
+		//break;
+	case 8: //case 8:
+		var3 = e.getBinaryValueOfVariant(var1) //var3 = this.getBinaryValueOfVariant(var1);
+		var var17 int = len(var3) / 3 << 2     //int var17 = var3.length / 3 << 2;
+		if len(var3)%3 != 0 {                  //if (var3.length % 3 != 0) {
+			var17 += 4 //var17 += 4;
+		}
+
+		var17 += var17 / 76                                        //var17 += var17 / 76;
+		var var18 []string = make([]string, var17, var17)          //char[] var18 = new char[var17];
+		var var19 int = Base64encode(var3, 0, len(var3), var18, 0) //int var19 = Base64.encode(var3, 0, var3.length, var18, 0);
+
+		var2 = ""                      //var2 = new String(var18, 0, var19);
+		for idx, elem := range var18 { //var2 = new String(var18, 0, var19);
+			var2 += elem
+			if idx >= var19 {
+				break
+			}
+		}
+		//break;
+	case 9: //case 9:
+		panic("EXISchema.class, func computeVariantCharacters, case 9") //assert false;
+
+		return "nil" //return null
+	case 10: //case 10:
+		var3 = e.getBinaryValueOfVariant(var1) //var3 = this.getBinaryValueOfVariant(var1);
+		var var20 strings.Builder              //StringBuffer var20 = new StringBuffer();
+		HexBinencode(var3, len(var3), &var20)  //HexBin.encode(var3, var3.length, var20);
+		var2 = var20.String()                  //var2 = var20.toString();
+		//break;
+	default: //default:
+		panic("EXISchema.class, func computeVariantCharacters, default") //assert false;
+	}
+
+	return var2 //return var2;
+}
+
+func (e *EXISchema) getElems() []int { //public int[] getElems() {
+	return e.m_elems
+}
+
+func (e *EXISchema) getTypeOfAttr(var1 int) int { //public int getTypeOfAttr(int var1) {
+	if 0 > var1 { //assert 0 <= var1;
+		panic("EXISchema.class, func getTypeOfAttr, 0 > var1")
+	}
+	result := e._getTypeOfAttr(var1, e.m_attrs)
+	return result //return _getTypeOfAttr(var1, this.m_attrs);
+}
+
+func (e *EXISchema) _getTypeOfAttr(var0 int, var1 []int) int { //public static int _getTypeOfAttr(int var0, int[] var1) {
+	var var2 int = var1[var0+2] //int var2 = var1[var0 + 2];
+	var result int
+	if (var2 & -2147483648 /*0x80000000*/ /*Integer.MIN_VALUE*/) != 0 {
+		result = (^var2)
+	} else {
+		result = var2
+	}
+	return result //return (var2 & Integer.MIN_VALUE) != 0 ? ~var2 : var2;
+}
+
+func (e *EXISchema) isNillableElement(var1 int) bool { //public boolean isNillableElement(int var1) {
+	if 0 > var1 { //assert 0 <= var1;
+		panic("EXISchema.class, func isNillableElement, 0 > var1")
+	}
+	return e.m_elems[var1+3] != 0 //return this.m_elems[var1 + 3] != 0;
+}
+
+func (e *EXISchema) getTypeOfElem(var1 int) int { //public int getTypeOfElem(int var1) {
+	if 0 > var1 { //assert 0 <= var1;
+		panic("EXISchema.class, func getTypeOfElem, 0 > var1")
+	}
+	var var2 int = e.m_elems[var1+2] //int var2 = this.m_elems[var1 + 2];
+	if (var2 & -2147483648 /*0x80000000*/ /*Integer.MIN_VALUE*/) != 0 {
+		return (^var2)
+	}
+	return var2 //return (var2 & Integer.MIN_VALUE) != 0 ? ~var2 : var2;
+}
+
+func (e *EXISchema) getBinaryValueOfVariant(var1 int) []byte { //public byte[] getBinaryValueOfVariant(int var1) {
+	var var2 byte = e.m_variantTypes[var1] //byte var2 = this.m_variantTypes[var1];
+
+	if 0 > var1 && (var2 != 8 || var2 != 10) { //assert 0 <= var1 && (var2 == 8 || var2 == 10);
+		panic("EXISchema.class, func  getBinaryValueOfVariant, 0 > var1 && (var2 != 8 || var2 != 10)")
+	}
+	return e.m_binaries[e.m_variants[var1]]
+}
+
+func (e *EXISchema) getDurationValueOfVariant(var1 int) int64 /*Duration*/ { //public Duration getDurationValueOfVariant(int var1) {
+	if 0 > var1 && e.m_variantTypes[var1] != 7 { //assert 0 <= var1 && this.m_variantTypes[var1] == 7;
+		panic("EXISchema.class, func getDurationValueOfVariant, 0 > var1 && e.m_variantTypes[var1] != 7")
+	}
+	return e.m_durations[e.m_variants[var1]]
+}
+
+func (e *EXISchema) getDateTimeValueOfVariant(var1 int) string /*XSDateTime*/ { //public XSDateTime getDateTimeValueOfVariant(int var1) {
+	if 0 > var1 && e.m_variantTypes[var1] != 6 { //assert 0 <= var1 && this.m_variantTypes[var1] == 6;
+		panic("EXISchema.class, func getDateTimeValueOfVariant, 0 > var1 && e.m_variantTypes[var1] != 6 ")
+	}
+	return e.m_datetimes[e.m_variants[var1]]
+}
+
+func (e *EXISchema) getLongValueOfVariant(var1 int) int { //public long getLongValueOfVariant(int var1) {
+	if 0 > var1 && e.m_variantTypes[var1] != 5 { //assert 0 <= var1 && this.m_variantTypes[var1] == 5;
+		panic("EXISchema.class, func getLongValueOfVariant, 0 > var1 && e.m_variantTypes[var1] != 5")
+	}
+	return e.m_longs[e.m_variants[var1]]
+}
+
+func (e *EXISchema) getIntValueOfVariant(var1 int) int { //public int getIntValueOfVariant(int var1) {
+	if 0 > var1 && e.m_variantTypes[var1] != 4 { //assert 0 <= var1 && this.m_variantTypes[var1] == 4;
+		panic("EXISchema.class, func getIntValueOfVariant, 0 > var1 && e.m_variantTypes[var1] != 4")
+	}
+	return e.m_ints[e.m_variants[var1]]
+}
+
+func (e *EXISchema) getIntegerValueOfVariant(var1 int) int /*BigInteger*/ { //public BigInteger getIntegerValueOfVariant(int var1) {
+	if 0 > var1 && e.m_variantTypes[var1] != 3 { // assert 0 <= var1 && this.m_variantTypes[var1] == 3;
+		panic("EXISchema.class, func getIntegerValueOfVariant, 0 > var1 && e.m_variantTypes[var1] != 3")
+	}
+	return e.m_integers[e.m_variants[var1]]
+}
+
+func (e *EXISchema) getReverseFractionalDigitsOfDecimalVariant(var1 int) string { //public String getReverseFractionalDigitsOfDecimalVariant(int var1) {
+	if 0 > var1 && e.m_variantTypes[var1] != 2 { //assert 0 <= var1 && this.m_variantTypes[var1] == 2;
+		panic("EXISchema.class, func getReverseFractionalDigitsOfDecimalVariant, 0 > var1 && e.m_variantTypes[var1] != 2 ")
+	}
+	return e.m_reverseFractionalDigits[e.m_variants[var1]]
+}
+
+func (e *EXISchema) getIntegralDigitsOfDecimalVariant(var1 int) string { //public String getIntegralDigitsOfDecimalVariant(int var1) {
+	if 0 > var1 && e.m_variantTypes[var1] != 2 { //assert 0 <= var1 && this.m_variantTypes[var1] == 2;
+		panic("EXISchema.class, func getIntegralDigitsOfDecimalVariant, 0 > var1 && e.m_variantTypes[var1] != 2 ")
+	}
+	return e.m_integralDigits[e.m_variants[var1]]
+}
+
+func (e *EXISchema) getSignOfDecimalVariant(var1 int) bool { //public boolean getSignOfDecimalVariant(int var1) {
+	if 0 > var1 && e.m_variantTypes[var1] != 2 { //assert 0 <= var1 && this.m_variantTypes[var1] == 2;
+		panic("EXISchema.class, func getSignOfDecimalVariant, 0 > var1 && e.m_variantTypes[var1] != 2 ")
+	}
+	return e.m_signs[e.m_variants[var1]]
+}
+
+func (e *EXISchema) getStringValueOfVariant(var1 int) string { //public String getStringValueOfVariant(int var1) {
+	if (0 > var1) && (e.m_variantTypes[var1] != 0) { //assert 0 <= var1 && this.m_variantTypes[var1] == 0
+		panic("EXISchema.class, func getStringValueOfVariant, 0 > var1 && this.m_variantTypes[var1] != 0")
+	}
+	return e.m_strings[e.m_variants[var1]]
+}
+
+func (e *EXISchema) getUriOfType(var1 int) int { //public int getUriOfType(int var1) {
+	if 0 > var1 { //assert 0 <= var1;
+		panic("EXISchema.class, func getUriOfType, 0 > var1")
+	}
+	return e.m_types[var1+1]
+}
+
+func (e *EXISchema) getNameOfType(var1 int) string { //public String getNameOfType(int var1) {
+	if 0 > var1 { //assert 0 <= var1;
+		panic("EXISchema.class, func getNameOfType, 0 > var1")
+	}
+	var var2 = e.m_types[var1+0] //int var2 = this.m_types[var1 + 0];
+	if var2 != -1 {
+		var var3 = e.m_types[var1+1]                 //int var3 = this.m_types[var1 + 1];
+		return e.m_names[e.m_localNames[var3][var2]] //return this.m_names[this.m_localNames[var3][var2]];
+	} else {
+		return ""
+	}
+}
+
+func (e *EXISchema) isGlobalAttr(var1 int) bool { //public boolean isGlobalAttr(int var1) {
+	var var2 int = e.m_attrs[var1+2]
+	return (var2 & -2147483648 /*0x80000000*/ /*Integer.MIN_VALUE*/) != 0
+}
+
+func (e *EXISchema) getGlobalElemCountOfSchema() int { //public int getGlobalElemCountOfSchema() {
+	return len(e.m_globalElems)
+}
+
+func (e *EXISchema) isGlobalElem(var1 int) bool { //public boolean isGlobalElem(int var1) {
+	var var2 int = e.m_elems[var1+2]
+	return (var2 & -2147483648 /*0x80000000*/ /*Integer.MIN_VALUE*/) != 0
+}
+
+func (e *EXISchema) getNameOfElem(var1 int) string { //public String getNameOfElem(int var1) {
+	if 0 > var1 { //assert 0 <= var1;
+		panic("EXISchema.class, func getNameOfElem, 0 > var1")
+	}
+	var var2 int = e.m_elems[var1+0] //int var2 = this.m_elems[var1 + 0];
+	if var2 != -1 {
+		var var3 int = e.m_elems[var1+1]
+		return e.m_names[e.m_localNames[var3][var2]]
+	} else {
+		return ""
+	}
+}
+
+func (e *EXISchema) getBaseTypeOfSimpleType(var1 int) int { //public int getBaseTypeOfSimpleType(int var1) {
+	if 0 > var1 && e.m_types[var1+5] >= 0 { //	assert 0 <= var1 && this.m_types[var1 + 5] < 0;
+		panic("EXISchema.class, func getBaseTypeOfSimpleType, 0 > var1 && e.m_types[var1 + 5] >= 0")
+	}
+	return e.m_types[var1+6]
+}
+
+func (e *EXISchema) getVarietyOfSimpleType(var1 int) byte { //public byte getVarietyOfSimpleType(int var1) {
+	if 0 > var1 && e.m_types[var1+5] >= 0 { //  assert 0 <= var1 && this.m_types[var1 + 5] < 0;
+		panic("EXISchema.class, func getVarietyOfSimpleType, 0 > var1 && e.m_types[var1 + 5] >= 0")
+	}
+	return _getVarietyOfSimpleType(var1, e.m_types)
+}
+
+func (e *EXISchema) isSimpleType(var1 int) bool { //   public boolean isSimpleType(int var1) {
+	return (e.m_types[var1+5] & -2147483648 /*0x80000000*/ /*Integer.MIN_VALUE*/) != 0
+}
+
+func (e *EXISchema) getSerialOfType(var1 int) int { //public int getSerialOfType(int var1) {
+	if 0 > var1 { //	assert 0 <= var1;
+		panic("EXISchema.class, func getSerialOfType, 0 > var1")
+	}
+	return e.m_types[var1+2]
+}
+
+func _getTypeSize(var0 int, var1 []int, var2 []int /*[]byte*/) int { //public static int _getTypeSize(int var0, int[] var1, byte[] var2) {
+	if var0 == -1 {
+		panic("EXISchema.class, func _getTypeSize, var0==-1")
+	} //      assert var0 != -1;
+
+	if (var1[var0+5] & -2147483648 /*0x80000000*/ /*Integer.MIN_VALUE*/) != 0 { //      return (var1[var0 + 5] & Integer.MIN_VALUE) != 0 ? _getSizeOfSimpleType(var0, var1, var2) : 6;
+		return _getSizeOfSimpleType(var0, var1, var2)
+	}
+	return 6
+}
+
+func _getSizeOfSimpleType(var0 int, var1 []int, var2 []int /*[]byte*/) int { //private static int _getSizeOfSimpleType(int var0, int[] var1, byte[] var2) {
+	var var3 int = 8                                    //      int var3 = 8;
+	var var4 byte = _getVarietyOfSimpleType(var0, var1) //      byte var4 = _getVarietyOfSimpleType(var0, var1);
+	if var4 == 1 {                                      //      if (var4 == 1) {
+		if _isEnumeratedAtomicSimpleType(var0, var1) { //         if (_isEnumeratedAtomicSimpleType(var0, var1)) {
+			var3 += (1 + _getEnumerationFacetCountOfAtomicSimpleType(var0, var1, var2)) //            var3 += 1 + _getEnumerationFacetCountOfAtomicSimpleType(var0, var1, var2);
+		}
+
+		if var2[var1[var0+2]] == 2 { //         if (var2[var1[var0 + 2]] == 2) {
+			var3 += _getRestrictedCharacterCountOfStringSimpleType(var0, var1, var2) //            var3 += _getRestrictedCharacterCountOfStringSimpleType(var0, var1, var2);
+		}
+	}
+
+	return var3
+}
+func _getVarietyOfSimpleType(var0 int, var1 []int) byte { //public static byte _getVarietyOfSimpleType(int var0, int[] var1) {
+	return byte(var1[var0+5] & 3)
+}
+
+func _isEnumeratedAtomicSimpleType(var0 int, var1 []int) bool { //private static boolean _isEnumeratedAtomicSimpleType(int var0, int[] var1) {
+	return (var1[var0+5] & 4) != 0
+}
+
+func _getEnumerationFacetCountOfAtomicSimpleType(var0 int, var1 []int, var2 []int /*[]byte*/) int { //private static int _getEnumerationFacetCountOfAtomicSimpleType(int var0, int[] var1, byte[] var2) {
+	if _isEnumeratedAtomicSimpleType(var0, var1) {
+		var var3 int
+		if var2[var1[var0+2]] == 2 { //     int var3 = var2[var1[var0 + 2]] == 2 ? _getRestrictedCharacterCountOfStringSimpleType(var0, var1, var2) : 0;
+			var3 = _getRestrictedCharacterCountOfStringSimpleType(var0, var1, var2)
+		} else {
+			var3 = 0
+		}
+		return var1[var0+8+var3]
+	}
+
+	return 0
+}
+
+func _getRestrictedCharacterCountOfStringSimpleType(var0 int, var1 []int, var2 []int /*[]byte)*/) int { //   private static int _getRestrictedCharacterCountOfStringSimpleType(int var0, int[] var1, byte[] var2) {
+	var var3 int = (var1[var0+5] & 8160) >> 5 //int var3 = (var1[var0 + 5] & 8160) >> 5;
+
+	if 0 > var3 && var3 >= 256 { //      assert 0 <= var3 && var3 < 256;
+		panic("EXISchema.class, func _getRestrictedCharacterCountOfStringSimpleType, (0 > var3 && var3 >= 256)")
+	}
+
+	return var3
+}
+
+//////////////////Base64.class//////////////
+
+type Base64 struct { //public final class Base64 {
+	BASE64_ASCIIS []string //private static final char[] BASE64_ASCIIS;
+	BASE64CHARS   []byte   //private static final byte[] BASE64CHARS = new byte[8192];
+	m_octets      []byte   //private static final byte[] m_octets;
+}
+
+var myVarBase64 Base64 = Base64{
+	BASE64CHARS: make([]byte, 8192, 8192),
+}
+
+//private Base64() {
+//}
+
+func Base64encode(var0 []byte, var1 int, var2 int, var3 []string, var4 int) int { //public static int encode(byte[] var0, int var1, int var2, char[] var3, int var4) {
+	var var5 int = var1 + var2 //int var5 = var1 + var2;
+	var var6 = var4            //int var6 = var4;
+	var var7 = var1            //int var7 = var1;
+
+	for var8 := 0; var7 < var5; var8++ { //for(int var8 = 0; var7 < var5; ++var8) {
+		var var9 int                                    //int var9;
+		for var9 = 0; var9 < 3 && var7 < var5; var9++ { //for(var9 = 0; var9 < 3 && var7 < var5; ++var9) {
+			var7++ //++var7;
+		}
+
+		if var9 != 1 || var9 != 2 || var9 != 3 { //assert var9 == 1 || var9 == 2 || var9 == 3;
+			panic("Base64.class, Base64encode, var9 != 1 || var9 != 2 || var9 != 3")
+		}
+		var var13 byte = 64 //byte var13 = 64;
+		var var14 byte = 64 //byte var14 = 64;
+		var var11 byte      //byte var11;
+		var11 = byte(var0[var7] >> 2)
+		if (byte(var0[var7] >> 2)) < 0 { //if ((var11 = (byte)(var0[var7] >> 2)) < 0) {
+			var11 = byte(var11 ^ 192) //var11 = (byte)(var11 ^ 192);
+		}
+
+		var var12 byte //byte var12;
+		var12 = byte(var0[var7+1] >> 4)
+		if var9 > 1 { //if (var9 > 1) {
+			if (byte(var0[var7+1] >> 4)) < 0 { //if ((var12 = (byte)(var0[var7 + 1] >> 4)) < 0) {
+				var12 = byte(var12 ^ 240) //var12 = (byte)(var12 ^ 240);
+			}
+
+			var12 = (byte)((var0[var7]&3)<<4 | var12) //var12 = (byte)((var0[var7] & 3) << 4 | var12);
+			if var9 > 2 {                             //if (var9 > 2) {
+				var13 = byte(var0[var7+2] >> 6)
+				if (byte(var0[var7+2] >> 6)) < 0 { //if ((var13 = (byte)(var0[var7 + 2] >> 6)) < 0) {
+					var13 = byte(var13 ^ 252) //var13 = (byte)(var13 ^ 252);
+				}
+
+				var13 = byte((var0[var7+1]&15)<<2 | var13) //var13 = (byte)((var0[var7 + 1] & 15) << 2 | var13);
+				var14 = byte(var0[var7+2] & 63)            //var14 = (byte)(var0[var7 + 2] & 63);
+			} else { //} else {
+				var13 = byte((var0[var7+1] & 15) << 2) //var13 = (byte)((var0[var7 + 1] & 15) << 2);
+			}
+		} else { //} else {
+			var12 = byte((var0[var7] & 3) << 4) //var12 = (byte)((var0[var7] & 3) << 4);
+		}
+
+		var3[var6] = myVarBase64.BASE64_ASCIIS[var11]   //var3[var6++] = BASE64_ASCIIS[var11];
+		var3[var6+1] = myVarBase64.BASE64_ASCIIS[var12] //var3[var6++] = BASE64_ASCIIS[var12];
+		var3[var6+2] = myVarBase64.BASE64_ASCIIS[var13] //var3[var6++] = BASE64_ASCIIS[var13];
+		var3[var6+3] = myVarBase64.BASE64_ASCIIS[var14] //var3[var6++] = BASE64_ASCIIS[var14];
+		var6 = var6 + 4
+
+		if var8%19 == 18 { //if (var8 % 19 == 18) {
+			var3[var6] = "\n" //var3[var6++] = '\n';
+			var6 = var6 + 1
+		}
+	}
+
+	return var6 - var4 //return var6 - var4;
+}
+
+//to do
+/*
+	static {
+	   var Base64var0 string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=" //String var0 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+	   var Base64var1 int = 0 //int var1 = 0;
+
+	   var Base64var2 int //int var2;
+	   	for Base64var2 = len(var0); Base64var1 < Base64var2; Base64var1++ { //for(var2 = var0.length(); var1 < var2; ++var1) {
+			var var3 string = string(Base64var0[Base64var1]) //char var3 = var0.charAt(var1);
+			var var10000 []byte = BASE64CHARS //byte[] var10000 = BASE64CHARS;
+			var10000[var3 / 8] = byte(var10000[var3 / 8] | 1 << 7 - var3 % 8) //var10000[var3 / 8] = (byte)(var10000[var3 / 8] | 1 << 7 - var3 % 8);
+		}
+
+	   BASE64_ASCIIS = make([]string, len(Base64var0), len(Base64var0)) //BASE64_ASCIIS = new char[var0.length()];
+	   Base64var1 = 0 //var1 = 0;
+
+	   for Base64var2 = len(Base64var0); Base64var1 < Base64var2; Base64var1++ { //for(var2 = var0.length(); var1 < var2; ++var1) {
+		  BASE64_ASCIIS[Base64var1] = string(Base64var0[Base64var1]) //BASE64_ASCIIS[var1] = var0.charAt(var1);
+	   }
+
+	   m_octets = make([]byte,256,256) //m_octets = new byte[256];
+
+	   var Base64var4 int //int var4;
+	   for Base64var4 = 90; Base64var4 >= 65; Base64var4 = Base64var4-1  { //for(var4 = 90; var4 >= 65; --var4) {
+		  m_octets[Base64var4] = byte(Base64var4 - 65) //m_octets[var4] = (byte)(var4 - 65);
+	   }
+
+	   for Base64var4 = 122; Base64var4 >= 97; Base64var4 = Base64var4 - 1 { //for(var4 = 122; var4 >= 97; --var4) {
+		  m_octets[Base64var4] = byte(Base64var4 - 97 + 26) //m_octets[var4] = (byte)(var4 - 97 + 26);
+	   }
+
+	   for Base64var4 = 57; Base64var4 >= 48; Base64var4 = Base64var4 - 1 { //for(var4 = 57; var4 >= 48; --var4) {
+		  m_octets[vaBase644] = byte(Base64var4 - 48 + 52) //m_octets[var4] = (byte)(var4 - 48 + 52);
+	   }
+
+	   m_octets[43] = 62 //m_octets[43] = 62;
+	   m_octets[47] = 63 //m_octets[47] = 63;
+	}
+*/
+
+////////////////end Base64.class/////////
+////////////////HexBin.class//////////
+var HEXBIN_ASCIIS string = "0123456789ABCDEF"
+
+func HexBinencode(var0 []byte, var1 int, var2 *strings.Builder) { //public static void encode(byte[] var0, int var1, StringBuffer var2) {
+	if var0 != nil && (*var2).String() != "" { //if (var0 != null && var2 != null) {
+		for var3 := 0; var3 < var1; var3++ { //for(int var3 = 0; var3 < var1; ++var3) {
+			var var4 int //int var4;
+
+			var4 = int(var0[var3] >> 4)
+			if (var0[var3] >> 4) < 0 { //if ((var4 = var0[var3] >> 4) < 0) {
+				var4 &= 15 //var4 &= 15;
+			}
+
+			var var5 int = int(var0[var3] & 15)              //int var5 = var0[var3] & 15;
+			(*var2).WriteString(string(HEXBIN_ASCIIS[var4])) //var2.append("0123456789ABCDEF".charAt(var4));
+			(*var2).WriteString(string(HEXBIN_ASCIIS[var5])) //var2.append("0123456789ABCDEF".charAt(var5));
+		}
+	}
+
+}
+
+////////////////end HexBin.class/////
+
+/////////////////end EXISchema.class////////////////////////
+
+//////////EventType.class/////////////////////////////////
+
+type EventType struct {
+	ITEM_PI                      byte
+	ITEM_CM                      byte
+	ITEM_ER                      byte
+	ITEM_CH                      byte
+	ITEM_ED                      byte
+	ITEM_SE_WC                   byte
+	ITEM_SC                      byte
+	ITEM_NS                      byte
+	ITEM_AT_WC_ANY_UNTYPED       byte
+	ITEM_EE                      byte
+	ITEM_DTD                     byte
+	ITEM_SE                      byte
+	ITEM_AT                      byte
+	ITEM_SD                      byte
+	ITEM_SCHEMA_WC_ANY           byte
+	ITEM_SCHEMA_WC_NS            byte
+	ITEM_SCHEMA_AT               byte
+	ITEM_SCHEMA_AT_WC_ANY        byte
+	ITEM_SCHEMA_AT_WC_NS         byte
+	ITEM_SCHEMA_CH               byte
+	ITEM_SCHEMA_CH_MIXED         byte
+	ITEM_SCHEMA_NIL              byte
+	ITEM_SCHEMA_TYPE             byte
+	ITEM_SCHEMA_AT_INVALID_VALUE byte
+	depth                        byte
+	uri                          string
+	name                         string
+	//subsequentGrammar            IGrammar
+	m_path      []EventCode
+	m_uriId     int
+	m_nameId    int
+	m_eventKind byte
+	m_index     int
+	m_ownerList EventTypeList
+}
+
+var VAREventType EventType = EventType{
+	ITEM_PI:                      0,
+	ITEM_CM:                      1,
+	ITEM_ER:                      2,
+	ITEM_CH:                      3,
+	ITEM_ED:                      4,
+	ITEM_SE_WC:                   5,
+	ITEM_SC:                      6,
+	ITEM_NS:                      7,
+	ITEM_AT_WC_ANY_UNTYPED:       8,
+	ITEM_EE:                      9,
+	ITEM_DTD:                     10,
+	ITEM_SE:                      11,
+	ITEM_AT:                      12,
+	ITEM_SD:                      13,
+	ITEM_SCHEMA_WC_ANY:           14,
+	ITEM_SCHEMA_WC_NS:            15,
+	ITEM_SCHEMA_AT:               16,
+	ITEM_SCHEMA_AT_WC_ANY:        17,
+	ITEM_SCHEMA_AT_WC_NS:         18,
+	ITEM_SCHEMA_CH:               19,
+	ITEM_SCHEMA_CH_MIXED:         20,
+	ITEM_SCHEMA_NIL:              21,
+	ITEM_SCHEMA_TYPE:             22,
+	ITEM_SCHEMA_AT_INVALID_VALUE: 23,
+}
+
+///////EventCode.class/////////
+type EventCode struct {
+	ITEM_TUPLE             int //byte
+	EVENT_CODE_DEPTH_ONE   byte
+	EVENT_CODE_DEPTH_TWO   byte
+	EVENT_CODE_DEPTH_THREE byte
+	//EventCode parent = null;
+	position int
+	itemType byte
+}
+
+var VAREventCode EventCode = EventCode{
+	ITEM_TUPLE:             -1,
+	EVENT_CODE_DEPTH_ONE:   1,
+	EVENT_CODE_DEPTH_TWO:   2,
+	EVENT_CODE_DEPTH_THREE: 3,
+	//parent = null;
+	position: -1,
+}
+
+/////end EventCode.class///////
+///////EventTypeList.class/////
+type EventTypeList struct {
+	isReverse bool
+	//public static final EventTypeList EMPTY = new 1(false);
+}
+
+//////eng EventTypeList.class//
+
+///////end EventType.class/////////////////
+
+//////////////EXIGrammar.class/////////////
+type EXIGrammar struct { //final class EXIGrammar extends SchemaInformedGrammar implements IGrammar {
+	m_eventTypes    []EventType
+	m_eventCode     EventCodeTuple
+	m_eventTypeList ArrayEventTypeList
+}
+
+var VAREXIGrammar EXIGrammar = EXIGrammar{
+	m_eventCode:     VAREventCodeTuple,
+	m_eventTypeList: VARArrayEventTypeList,
+}
+
+func superEXIGrammar(var1 GrammarCache) {
+	superSchemaInformedGrammar(byte(5), var1)
+}
+
+func (e *EXIGrammar) substantiate(var1 int, var2 bool) { //void substantiate(int var1, boolean var2) {
+	var var3 int //int var3;
+	if var2 {    //if (var2) {
+		if var1 == -1 { //assert var1 != -1;
+			panic("EXIGrammar class, func substantiate, var1 == -1")
+		}
+		var var4 int = VARGrammar.schema.getTypeOfElem(var1) //int var4 = this.schema.getTypeOfElem(var1);
+		var3 = VARGrammar.schema.getGrammarOfType(var4)      //var3 = this.schema.getGrammarOfType(var4);
+	} else {
+		var3 = var1 //var3 = var1;
+	}
+
+	var x ArrayEventTypeList
+	e.m_eventTypeList = x //this.m_eventTypeList = new ArrayEventTypeList();
+
+	var var12 []int                                                    //ArrayList var12 = new ArrayList();
+	var var5 int = VARGrammar.schema.getProductionCountOfGrammar(var3) //int var5 = this.schema.getProductionCountOfGrammar(var3);
+	var var6 int = VARGrammar.schema.getContentGrammarOfGrammar(var3)  //int var6 = this.schema.getContentGrammarOfGrammar(var3);
+	//ArrayList var7 = GrammarOptions.isPermitDeviation(this.m_grammarCache.grammarOptions) && var6 != -1 ? new ArrayList() : null;
+
+	//int var8;
+	//int var9;
+	//for(var8 = 0; var8 < var5; ++var8) {
+	//var9 = this.schema.getProductionOfGrammar(var3, var8);
+	//EventType var10 = this.createEventType(var9, this.m_eventTypeList);
+	//var12.add(var10);
+	//if (var7 != null && var10.itemType == 16) {
+	//var7.add(this.createEventTypeSchemaAttributeInvalid((EventTypeSchema)var10, this.m_eventTypeList));
+	//}
+	//}
+
+	//if (this.schema.hasEndElement(var3)) {
+	//EventType var13 = EventTypeFactory.creatEndElement((byte)1, this.m_eventTypeList);
+	//var9 = var12.size();
+	//int var15 = 0;
+	//if (var9 != 0) {
+	//EventType var11 = (EventType)var12.get(var9 - 1);
+	//var15 = var11.itemType == 20 ? var9 - 1 : var9;
+	//}
+
+	//var12.add(var15, var13);
+	//}
+
+	//var8 = this.schema.getTypeEmptyGrammarOfGrammar(var3);
+	//EventCodeTupleSink var14;
+	//this.createEventCodeTuple(var12, this.m_grammarCache.grammarOptions, var14 = new EventCodeTupleSink(), var7, this.m_eventTypeList, this.schema.hasEmptyGrammar(var3), var1, var2, var8, var6);
+	//this.m_eventCode = var14.eventCodeTuple;
+	//this.m_eventTypes = var14.eventTypes;
+	//this.m_eventTypeList.setItems(var14.eventTypes);
+}
+
+///ArrayEventTypeList.class////
+type ArrayEventTypeList struct { //final class ArrayEventTypeList extends EventTypeList {
+	m_eventTypes                   []EventType       //private EventType[] m_eventTypes;
+	SCHEMA_ATTRIBUTES_NONE         []EventTypeSchema //private static final EventTypeSchema[] SCHEMA_ATTRIBUTES_NONE = new EventTypeSchema[0];
+	SCHEMA_ATTRIBUTES_INVALID_NONE []EventTypeSchema //private static final EventType[] SCHEMA_ATTRIBUTES_INVALID_NONE = new EventTypeSchema[0];
+	SCHEMA_ATTRIBUTES_WILDCARD_NS  []EventType       //private static final EventType[] SCHEMA_ATTRIBUTES_WILDCARD_NS = new EventType[0];
+	m_schemaAttributes             []EventTypeSchema //private EventTypeSchema[] m_schemaAttributes;
+	m_schemaAttributesInvalid      []EventType       //private EventType[] m_schemaAttributesInvalid;
+	m_n_schemaAttributes           int               //private int m_n_schemaAttributes;
+	m_n_schemaAttributesInvalid    int               //private int m_n_schemaAttributesInvalid;
+	m_schemaAttributeWildcard      EventType         //private EventType m_schemaAttributeWildcard;
+	m_attributeWildcardAnyUntyped  EventType         ///private EventType m_attributeWildcardAnyUntyped;
+	m_schemaAttributeWildcardNS    []EventType       //private EventType[] m_schemaAttributeWildcardNS;
+	m_n_schemaAttributesWildcardNS int               //private int m_n_schemaAttributesWildcardNS;
+	m_schemaCharacters             EventType         //private EventType m_schemaCharacters;
+	m_characters                   EventType         //private EventType m_characters;
+	m_namespaceDeclaration         EventType         //private EventType m_namespaceDeclaration;
+}
+
+var VARArrayEventTypeList ArrayEventTypeList = ArrayEventTypeList{
+	SCHEMA_ATTRIBUTES_NONE:         make([]EventTypeSchema, 0, 0), //private static final EventTypeSchema[] SCHEMA_ATTRIBUTES_NONE = new EventTypeSchema[0];
+	SCHEMA_ATTRIBUTES_INVALID_NONE: make([]EventTypeSchema, 0, 0), //private static final EventType[] SCHEMA_ATTRIBUTES_INVALID_NONE = new EventTypeSchema[0];
+	SCHEMA_ATTRIBUTES_WILDCARD_NS:  make([]EventType, 0, 0),       //private static final EventType[] SCHEMA_ATTRIBUTES_WILDCARD_NS = new EventType[0];
+}
+
+///EventTypeSchema.class///
+type EventTypeSchema struct { //public final class EventTypeSchema extends EventType {
+	nd int
+}
+
+///end EventTypeSchema.class///
+
+///end ArrayEventTypeList.class////
+
+///EventCodeTuple.class///
+type EventCodeTuple struct { //public abstract class EventCodeTuple extends EventCode {
+	reversed   bool
+	eventCodes []EventCode
+	width      int
+	itemsCount int
+	headItem   EventCode
+}
+
+var VAREventCodeTuple EventCodeTuple = EventCodeTuple{
+	width:      0,
+	itemsCount: 0,
+}
+
+///end EventCodeTuple.class///
+//
+///SchemaInformedGrammar.class///
+type SchemaInformedGrammar struct { //public abstract class SchemaInformedGrammar extends Grammar {
+	ELEMENT_FRAGMENT_STATE_BASE          byte //protected static final byte ELEMENT_FRAGMENT_STATE_BASE = 4;
+	ELEMENT_FRAGMENT_STATE_TAG           byte //public static final byte ELEMENT_FRAGMENT_STATE_TAG = 4;
+	ELEMENT_FRAGMENT_STATE_CONTENT       byte //public static final byte ELEMENT_FRAGMENT_STATE_CONTENT = 5;
+	ELEMENT_FRAGMENT_EMPTY_STATE_TAG     byte //public static final byte ELEMENT_FRAGMENT_EMPTY_STATE_TAG = 6;
+	ELEMENT_FRAGMENT_EMPTY_STATE_CONTENT byte //public static final byte ELEMENT_FRAGMENT_EMPTY_STATE_CONTENT = 7;
+}
+
+var VARSchemaInformedGrammar SchemaInformedGrammar = SchemaInformedGrammar{
+	ELEMENT_FRAGMENT_STATE_BASE:          4,
+	ELEMENT_FRAGMENT_STATE_TAG:           4,
+	ELEMENT_FRAGMENT_STATE_CONTENT:       5,
+	ELEMENT_FRAGMENT_EMPTY_STATE_TAG:     6,
+	ELEMENT_FRAGMENT_EMPTY_STATE_CONTENT: 7,
+}
+
+func superSchemaInformedGrammar(var1 byte, var2 GrammarCache) {
+	superGrammar(var1, var2)
+}
+
+///end SchemaInformedGrammar.clas///
+//
+///Grammar.class//
+type Grammar struct { //public abstract class Grammar {
+	BUILTIN_GRAMMAR_ELEMENT             byte         //public static final byte BUILTIN_GRAMMAR_ELEMENT = 0;
+	BUILTIN_GRAMMAR_FRAGMENT            byte         //public static final byte BUILTIN_GRAMMAR_FRAGMENT = 1;
+	SCHEMA_GRAMMAR_DOCUMENT             byte         //public static final byte SCHEMA_GRAMMAR_DOCUMENT = 2;
+	SCHEMA_GRAMMAR_FRAGMENT             byte         //public static final byte SCHEMA_GRAMMAR_FRAGMENT = 3;
+	SCHEMA_GRAMMAR_ELEMENT_FRAGMENT     byte         //public static final byte SCHEMA_GRAMMAR_ELEMENT_FRAGMENT = 4;
+	SCHEMA_GRAMMAR_ELEMENT_AND_TYPE     byte         //public static final byte SCHEMA_GRAMMAR_ELEMENT_AND_TYPE = 5;
+	SCHEMA_GRAMMAR_ELEMENT_AND_TYPE_USE byte         //public static final byte SCHEMA_GRAMMAR_ELEMENT_AND_TYPE_USE = 6;
+	DOCUMENT_STATE_BASE                 byte         //private static final byte DOCUMENT_STATE_BASE = 0;
+	DOCUMENT_STATE_CREATED              byte         //protected static final byte DOCUMENT_STATE_CREATED = 0;
+	DOCUMENT_STATE_DEPLETE              byte         //protected static final byte DOCUMENT_STATE_DEPLETE = 1;
+	DOCUMENT_STATE_COMPLETED            byte         //public static final byte DOCUMENT_STATE_COMPLETED = 2;
+	DOCUMENT_STATE_END                  byte         //public static final byte DOCUMENT_STATE_END = 3;
+	grammarType                         byte         //public final byte grammarType;
+	m_grammarCache                      GrammarCache //protected final GrammarCache  m_grammarCache;
+	schema                              EXISchema    //protected final EXISchema schema;
+}
+
+var VARGrammar Grammar = Grammar{
+	BUILTIN_GRAMMAR_ELEMENT:             0,
+	BUILTIN_GRAMMAR_FRAGMENT:            1,
+	SCHEMA_GRAMMAR_DOCUMENT:             2,
+	SCHEMA_GRAMMAR_FRAGMENT:             3,
+	SCHEMA_GRAMMAR_ELEMENT_FRAGMENT:     4,
+	SCHEMA_GRAMMAR_ELEMENT_AND_TYPE:     5,
+	SCHEMA_GRAMMAR_ELEMENT_AND_TYPE_USE: 6,
+	DOCUMENT_STATE_BASE:                 0,
+	DOCUMENT_STATE_CREATED:              0,
+	DOCUMENT_STATE_DEPLETE:              1,
+	DOCUMENT_STATE_COMPLETED:            2,
+	DOCUMENT_STATE_END:                  3,
+}
+
+func superGrammar(var1 byte, var2 GrammarCache) {
+	VARGrammar.grammarType = var1
+	VARGrammar.m_grammarCache = var2
+	VARGrammar.schema = VARGrammar.m_grammarCache.getEXISchema()
+}
+
+///end Grammar.class///
+
+///////////end EXIGrammar.class///////////
+
+///EXIGrammarUse.class///
+type EXIGrammarUse struct { //final class EXIGrammarUse extends Grammar implements IGrammar {
+	exiGrammar      EXIGrammar //EXIGrammar exiGrammar;
+	contentDatatype int        //final int contentDatatype
+}
+
+var VAREXIGrammarUse EXIGrammarUse = EXIGrammarUse{}
+
+func (e *EXIGrammarUse) EXIGrammarUse1(var1 int, var2 GrammarCache) {
+	//super((byte)6, var2);
+	e.contentDatatype = var1
+}
+
+///end EXIGrammarUse.class///
+
+////////////////////////////////////end GrammarCache.class////////////////////////////////////////////////////////////////////////////////
+
+////SchemaId.class////////////////////
+type SchemaId struct {
+	m_value string
+}
+
+var VARSchemaId SchemaId = SchemaId{""}
+
+func (s *SchemaId) SchemaId1(var1 string) {
+	s.m_value = var1
+}
+
+func (s *SchemaId) getValue() string {
+	return s.m_value
+}
+
+////end SchemaId.class/////////////////
+
+type Transmogrifier struct {
+	//m_xmlReader           *os.File //возможно string
+	//m_saxHandler          string   // обработка SAX событий(событий XML)
+	//m_outputOptions       HeaderOptionsOutputType
+	m_exiOptions          EXIOptions
+	SCHEMAID_NO_SCHEMA    SchemaId
+	SCHEMAID_EMPTY_SCHEMA SchemaId
+}
+
+var VARTransmogrifier Transmogrifier = Transmogrifier{
+	SCHEMAID_NO_SCHEMA:    VARSchemaId,
+	SCHEMAID_EMPTY_SCHEMA: VARSchemaId,
+}
+
+func (t *Transmogrifier) setGrammarCache1(var1 GrammarCache) { //public final void setGrammarCache(GrammarCache var1) throws EXIOptionsException {
+	t.setGrammarCache2(var1, SchemaId{""}) //this.setGrammarCache(var1, (SchemaId)null);
+}
+
+func (t *Transmogrifier) setGrammarCache2(var1 GrammarCache, var2 SchemaId) { //public final void setGrammarCache(GrammarCache var1, SchemaId var2) throws EXIOptionsException {
+	var var3 EXISchema = var1.getEXISchema() //EXISchema var3 = var1.getEXISchema();
+	if var2 == VARSchemaId {                 //if (var2 == null) {
+		if reflect.DeepEqual(var3, nilVAREXISchema) { //if (var3 == null) {//todo if == else
+			var2 = VARTransmogrifier.SCHEMAID_NO_SCHEMA //var2 = SCHEMAID_NO_SCHEMA;
+		} else if reflect.DeepEqual(var3, nilVAREXISchema) { //} else if (var3 == EmptySchema.getEXISchema()) {
+			var2 = VARTransmogrifier.SCHEMAID_EMPTY_SCHEMA //var2 = SCHEMAID_EMPTY_SCHEMA;
+		}
+	}
+
+	t.m_exiOptions.setSchemaId(var2)                      //this.m_exiOptions.setSchemaId(var2);
+	t.m_exiOptions.setGrammarOptions(var1.grammarOptions) //this.m_exiOptions.setGrammarOptions(var1.grammarOptions);
+	//org.openexi.sax.Transmogrifier.SAXEventHandler.access$200(this.m_saxHandler, var1);
+}
+
+///////////EXIOptions.class////////////
+type EXIOptions struct {
+	ADD_LESSCOMMON                        int
+	ADD_UNCOMMON                          int
+	ADD_ALIGNMENT                         int
+	ADD_PRESERVE                          int
+	ADD_COMMON                            int
+	ADD_VALUE_MAX_LENGTH                  int
+	ADD_VALUE_PARTITION_CAPACITY          int
+	ADD_FRAGMENT                          int
+	ADD_DTRM                              int
+	BLOCKSIZE_DEFAULT                     int
+	VALUE_MAX_LENGTH_UNBOUNDED            int
+	VALUE_PARTITION_CAPACITY_UNBOUNDED    int
+	m_alignmentType                       AlignmentType
+	m_isFragment                          bool
+	m_isStrict                            bool
+	m_preserveComments                    bool
+	m_preservePIs                         bool
+	m_preserveDTD                         bool
+	m_preserveNS                          bool
+	m_infuseSC                            bool
+	m_schemaId                            SchemaId
+	m_blockSize                           int
+	m_valueMaxLength                      int
+	m_valuePartitionCapacity              int
+	m_preserveLexicalValues               bool
+	m_n_datatypeRepresentationMapBindings int
+	m_datatypeRepresentationMap           []QName
+}
+
+func (e *EXIOptions) EXIOptions() {
+	//e.init()//init() используется для выполнения инициализации сервлета. Создает и загружает объекты, которые используются сервлетом при обработке его запроса.
+	e.m_datatypeRepresentationMap = make([]QName, 16, 16)
+	/*//думаю не нужно
+	for var1 := 0; var1 < len(q.m_datatypeRepresentationMap); var1++ {
+	   q.m_datatypeRepresentationMap[var1] = new QName();
+	}
+	*/
+}
+
+var VAREXIOptions EXIOptions = EXIOptions{
+	ADD_LESSCOMMON:                     1,
+	ADD_UNCOMMON:                       2,
+	ADD_ALIGNMENT:                      4,
+	ADD_PRESERVE:                       8,
+	ADD_COMMON:                         16,
+	ADD_VALUE_MAX_LENGTH:               32,
+	ADD_VALUE_PARTITION_CAPACITY:       64,
+	ADD_FRAGMENT:                       128,
+	ADD_DTRM:                           256,
+	BLOCKSIZE_DEFAULT:                  1000000,
+	VALUE_MAX_LENGTH_UNBOUNDED:         -1,
+	VALUE_PARTITION_CAPACITY_UNBOUNDED: -1,
+}
+
+func (e *EXIOptions) setSchemaId(var1 SchemaId) { //func (e *EXIOptions) setSchemaId(var1 SchemaId) *EXIOptions {
+	e.m_schemaId = var1
+	//return e
+}
+
+func (e *EXIOptions) setGrammarOptions(var1 int) { //throws EXIOptionsException
+	e.m_isStrict = (var1 == 1) //if (this.m_isStrict = var1 == 1) {
+	if e.m_isStrict {
+		e.m_preserveComments = false
+		e.m_preservePIs = false
+		e.m_preserveDTD = false
+		e.m_preserveNS = false
+		e.m_infuseSC = false
+	} else {
+		e.m_preserveComments = VARGrammarOptions.hasCM(var1) //было без VAR...
+		e.m_preservePIs = VARGrammarOptions.hasPI(var1)      //было без VAR...
+		e.m_preserveDTD = VARGrammarOptions.hasDTD(var1)     //было без VAR...
+		e.m_preserveNS = VARGrammarOptions.hasNS(var1)       //было без VAR...
+		e.setInfuseSC(VARGrammarOptions.hasSC(var1))         //было без VAR...
+	}
+}
+
+func (e *EXIOptions) setInfuseSC(var1 bool /*VARAlignmentType AlignmentType*/) (*EXIOptions, error) { //добавил VARAlignmentType AlignmentType//throws EXIOptionsException
+	var err error
+	var var2 bool
+	if e.m_infuseSC != var1 {
+		if var1 {
+			if e.m_alignmentType.compress == VARAlignmentType.compress { //опять таже штука с AlignmentType
+				err = errors.New("selfContained option and compression option cannot be used together")
+				e.m_infuseSC = var2
+				return e, err
+			}
+			if e.m_alignmentType.preCompress == VARAlignmentType.preCompress { //опять таже штука с AlignmentType
+				err = errors.New("selfContained option and pre-compression option cannot be used together")
+				e.m_infuseSC = var2
+				return e, err
+			}
+			if e.m_isStrict {
+				err = errors.New("selfContained option and strict option cannot be used together")
+				e.m_infuseSC = var2
+				return e, err
+			}
+		}
+		e.m_infuseSC = var1
+		return e, err
+	}
+	err = errors.New("metod setInfuseSC: e.m_infuseSC == var1")
+	e.m_infuseSC = var2
+	return e, err
+}
+
+///QName.class////////////////////////
+type QName struct {
+	qName         string
+	namespaceName string
+	localName     string
+	prefix        string
+	uriId         int
+	localNameId   int
+}
+
+func (q *QName) QName1() {}
+func (q *QName) QName2(var1, var2 string) {
+	q.qName = var1
+	var var3 int = strings.Index(q.qName, ":")
+	if var3 != -1 {
+		var var4 int = len([]rune(q.qName)) //add []rune
+		var var5 int = var4 - 1
+		//label40:
+		for var5 > 0 {
+			if string(var1[var5]) == string('\t') {
+			} else if string(var1[var5]) == string('\n') {
+			} else if string(var1[var5]) == string('\r') {
+			} else if string(var1[var5]) == string(' ') {
+				var5 = (var5 - 1)
+				break
+			} else {
+				break
+			}
+		}
+		q.localName = q.qName[var3 : var5+1]
+		var5 = 0
+
+		//label31:
+		for var5 < var4 {
+			if string(var1[var5]) == string('\t') {
+			} else if string(var1[var5]) == string('\n') {
+			} else if string(var1[var5]) == string('\r') {
+			} else if string(var1[var5]) == string(' ') {
+				var5 = (var5 + 1)
+				break
+			} else {
+				break
+			}
+		}
+		q.prefix = q.qName[var5-1 : var3]
+		q.namespaceName = var2
+
+	} else {
+		q.localName = q.qName
+		if var2 != "" {
+			q.namespaceName = var2
+		} else {
+			q.namespaceName = ""
+		}
+		q.prefix = ""
+	}
+}
+
+func (q *QName) setValue1(var1, var2, var3 string) *QName {
+	var var4 string = ""
+	q.qName = var4
+	q.namespaceName = var1
+	q.localName = var2
+	q.prefix = var3
+	return q
+}
+
+func (q *QName) setValue2(var1, var2, var3, var4 string) *QName { //(*string, *string, *string, *string) {
+	q.qName = var4
+	q.namespaceName = var1
+	q.localName = var2
+	q.prefix = var3
+	return q //&q.qName, &q.namespaceName, &q.localName, &q.prefix
+}
+
+/*нужно подумать нужно ли оно в принципе
+public boolean equals(Object var1) {
+	if (var1 != null && var1 instanceof QName) {
+	   QName var2 = (QName)var1;
+	   if (this.namespaceName != null) {
+		  return this.namespaceName.equals(var2.namespaceName) && this.localName.equals(var2.localName);
+	   }
+	}
+
+	return false;
+}
+*/
+func (q *QName) toString() string {
+	if q.namespaceName != "" {
+		return ("{ " + q.namespaceName + " }" + q.localName)
+	}
+	return ("")
+}
+func (q *QName) isSame(var0 []QName, var1 int, var2 []QName, var3 int) bool {
+	var var4 int = 2 * var3
+	if var0 == nil {
+		panic("met isSame QNane struct - var0 is nil")
+	}
+	if var1 == 0 {
+		if var4 == 0 {
+			return true
+		}
+	} else {
+		var lenVar0 int = len(var0) //my var
+		var lenVar2 int = len(var2) //my var
+		var var5 int = 2 * var1
+
+		if var5 == 0 {
+			panic("met isSame QNane struct - var5 is 0")
+		}
+		if var4 != 0 && var4 == var5 {
+			var var6 int
+			for var6 = 0; var6 < var4; var6++ {
+				if lenVar0 == var6 {
+					if lenVar2 < var6 {
+						break
+					}
+				} else if (lenVar2 == var6) || (!((var2[var6+1]) == (var0[var6+1]))) {
+					break
+				}
+				/*
+					var var7 QName = var0[var6]
+					var var8 QName = var2[var6]
+				*/ //убрал, ибо не вижу пока смысла от переменных
+			}
+
+			if var6 == var4 {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+//////////end QName.class/////////////
+
+///////////AlignmentType.class////////
+type AlignmentType struct {
+	bitPacked   string //наверное
+	byteAligned string //наверное
+	preCompress string //наверное
+	compress    string //наверное
+}
+
+var VARAlignmentType AlignmentType = AlignmentType{"bitPacked", "byteAligned", "preCompress", "compress"}
+
+////////////end AlignmentType.class//////
+
+///////end EXIOptions.class////////////
+//////GrammarOptions.class/////////////////////////
+type GrammarOptions struct {
+	RESTRICT_XSI_NIL_TYPE_MASK int
+	ADD_UNDECLARED_EA_MASK     int
+	ADD_NS                     int
+	ADD_SC                     int
+	ADD_DTD                    int
+	ADD_CM                     int
+	ADD_PI                     int
+	OPTIONS_UNUSED             int
+	DEFAULT_OPTIONS            int
+	STRICT_OPTIONS             int
+}
+
+var VARGrammarOptions GrammarOptions = GrammarOptions{
+	RESTRICT_XSI_NIL_TYPE_MASK: 1,
+	ADD_UNDECLARED_EA_MASK:     2,
+	ADD_NS:                     4,
+	ADD_SC:                     8,
+	ADD_DTD:                    16,
+	ADD_CM:                     32,
+	ADD_PI:                     64,
+	OPTIONS_UNUSED:             0,
+	DEFAULT_OPTIONS:            2,
+	STRICT_OPTIONS:             1,
+}
+
+func (g *GrammarOptions) GrammarOptions() {}
+
+func (g *GrammarOptions) restrictXsiNilType(var0 int, var1 bool) int {
+	if var1 {
+		return (var0 | 1)
+	}
+	return (var0 & -2)
+}
+
+func (g *GrammarOptions) isXsiNilTypeRestricted(var0 int) bool {
+	return ((var0 & 1) != 0)
+}
+
+func (g *GrammarOptions) isPermitDeviation(var0 int) bool {
+	return ((var0 & 2) != 0)
+}
+
+func (g *GrammarOptions) hasNS(var0 int) bool {
+	return ((var0 & 4) != 0)
+}
+
+func (g *GrammarOptions) hasSC(var0 int) bool {
+	return ((var0 & 8) != 0)
+}
+
+func (g *GrammarOptions) hasDTD(var0 int) bool {
+	return ((var0 & 16) != 0)
+}
+
+func (g *GrammarOptions) hasCM(var0 int) bool {
+	return ((var0 & 32) != 0)
+}
+
+func (g *GrammarOptions) hasPI(var0 int) bool {
+	return ((var0 & 64) != 0)
+}
+
+func (g *GrammarOptions) addNS(var0 int) int {
+	return (var0 | 4)
+}
+
+func (g *GrammarOptions) addSC(var0 int) int {
+	return (var0 | 8)
+}
+
+func (g *GrammarOptions) addDTD(var0 int) int {
+	return (var0 | 16)
+}
+
+func (g *GrammarOptions) addCM(var0 int) int {
+	return (var0 | 32)
+}
+
+func (g *GrammarOptions) addPI(var0 int) int {
+	return (var0 | 64)
+}
+
+//////end GrammarOptions.class/////////////////////
+
+///////////////////////////////////////end Transmogrifier.class///////////////////////////////////////////////////////////////////////////
+
+func main() {
+	infile, err := os.Open("build.txt")
+	//var xml1 string
+	if err != nil {
+		err = errors.New("reading file error")
+		fmt.Println(err)
+		return
+	}
+	outfile, err := os.Create("exiBuild.txt")
+	if err != nil {
+		err = errors.New("out file error")
+		fmt.Println(err)
+		return
+	}
+	defer infile.Close()
+	defer outfile.Close()
+
+	var workgrammarCache GrammarCache
+
+}
+
+/*(bytes.Equal(g.m_schema.COOKIE, nilVAREXISchema.COOKIE)) &&
+(g.m_schema.NIL_NODE != nilVAREXISchema.NIL_NODE) &&
+(g.m_schema.NIL_VALUE != nilVAREXISchema.NIL_VALUE) &&
+(g.m_schema.EMPTY_STRING != nilVAREXISchema.EMPTY_STRING) &&
+(g.m_schema.NIL_GRAM != nilVAREXISchema.NIL_GRAM) &&
+(g.m_schema.EVENT_AT_WILDCARD != nilVAREXISchema.EVENT_AT_WILDCARD) &&
+(g.m_schema.EVENT_SE_WILDCARD != nilVAREXISchema.EVENT_SE_WILDCARD) &&
+(g.m_schema.EVENT_CH_UNTYPED != nilVAREXISchema.EVENT_CH_UNTYPED) &&
+(g.m_schema.EVENT_CH_TYPED != nilVAREXISchema.EVENT_CH_TYPED) &&
+(g.m_schema.MIN_EVENT_ID != nilVAREXISchema.MIN_EVENT_ID) &&
+(g.m_schema.EVENT_TYPE_AT != nilVAREXISchema.EVENT_TYPE_AT) &&
+(g.m_schema.EVENT_TYPE_SE != nilVAREXISchema.EVENT_TYPE_SE) &&
+(g.m_schema.EVENT_TYPE_AT_WILDCARD_NS != nilVAREXISchema.EVENT_TYPE_AT_WILDCARD_NS) &&
+(g.m_schema.EVENT_TYPE_SE_WILDCARD_NS != nilVAREXISchema.EVENT_TYPE_SE_WILDCARD_NS) &&
+(g.m_schema.TRUE_VALUE != nilVAREXISchema.TRUE_VALUE) &&
+(g.m_schema.FALSE_VALUE != nilVAREXISchema.FALSE_VALUE) &&
+(g.m_schema.UNBOUNDED_OCCURS != nilVAREXISchema.UNBOUNDED_OCCURS) &&
+(g.m_schema.CONSTRAINT_NONE != nilVAREXISchema.CONSTRAINT_NONE) &&
+(g.m_schema.CONSTRAINT_DEFAULT != nilVAREXISchema.CONSTRAINT_DEFAULT) &&
+(g.m_schema.CONSTRAINT_FIXED != nilVAREXISchema.CONSTRAINT_FIXED) &&
+(g.m_schema.WHITESPACE_PRESERVE != nilVAREXISchema.WHITESPACE_PRESERVE) &&
+(g.m_schema.WHITESPACE_REPLACE != nilVAREXISchema.WHITESPACE_REPLACE) &&
+(g.m_schema.WHITESPACE_COLLAPSE != nilVAREXISchema.WHITESPACE_COLLAPSE) &&
+(g.m_schema.VARIANT_STRING != nilVAREXISchema.VARIANT_STRING) &&
+(g.m_schema.VARIANT_FLOAT != nilVAREXISchema.VARIANT_FLOAT) &&
+(g.m_schema.VARIANT_DECIMAL != nilVAREXISchema.VARIANT_DECIMAL) &&
+(g.m_schema.VARIANT_INTEGER != nilVAREXISchema.VARIANT_INTEGER) &&
+(g.m_schema.VARIANT_INT != nilVAREXISchema.VARIANT_INT) &&
+(g.m_schema.VARIANT_LONG != nilVAREXISchema.VARIANT_LONG) &&
+(g.m_schema.VARIANT_DATETIME != nilVAREXISchema.VARIANT_DATETIME) &&
+(g.m_schema.VARIANT_DURATION != nilVAREXISchema.VARIANT_DURATION) &&
+(g.m_schema.VARIANT_BASE64 != nilVAREXISchema.VARIANT_BASE64) &&
+(g.m_schema.VARIANT_BOOLEAN != nilVAREXISchema.VARIANT_BOOLEAN) &&
+(g.m_schema.VARIANT_HEXBIN != nilVAREXISchema.VARIANT_HEXBIN) &&
+(g.m_schema.INTEGER_CODEC_DEFAULT != nilVAREXISchema.INTEGER_CODEC_DEFAULT) &&
+(g.m_schema.INTEGER_CODEC_NONNEGATIVE != nilVAREXISchema.INTEGER_CODEC_NONNEGATIVE) &&
+(g.m_schema.ANCESTRY_IDS != nilVAREXISchema.ANCESTRY_IDS) &&
+(g.m_schema.ELEMENT_NAMES != nilVAREXISchema.ELEMENT_NAMES) &&
+(g.m_schema.DEFAULT_TYPABLES != nilVAREXISchema.DEFAULT_TYPABLES) &&
+(g.m_schema.UR_SIMPLE_TYPE != nilVAREXISchema.UR_SIMPLE_TYPE) &&
+(g.m_schema.ATOMIC_SIMPLE_TYPE != nilVAREXISchema.ATOMIC_SIMPLE_TYPE) &&
+(g.m_schema.LIST_SIMPLE_TYPE != nilVAREXISchema.LIST_SIMPLE_TYPE) &&
+(g.m_schema.UNION_SIMPLE_TYPE != nilVAREXISchema.UNION_SIMPLE_TYPE) &&
+(g.m_schema.m_elems != nilVAREXISchema.m_elems) &&
+(g.m_schema.m_attrs != nilVAREXISchema.m_attrs) &&
+(g.m_schema.m_types != nilVAREXISchema.m_types) &&
+(g.m_schema.uris != nilVAREXISchema.uris) &&
+(g.m_schema.localNames != nilVAREXISchema.localNames) &&
+(g.m_schema.m_localNames != nilVAREXISchema.m_localNames) &&
+(g.m_schema.m_names != nilVAREXISchema.m_names) &&
+(g.m_schema.m_strings != nilVAREXISchema.m_strings) &&
+(g.m_schema.m_ints != nilVAREXISchema.m_ints) &&
+(g.m_schema.m_mantissas != nilVAREXISchema.m_mantissas) &&
+(g.m_schema.m_exponents != nilVAREXISchema.m_exponents) &&
+(g.m_schema.m_signs != nilVAREXISchema.m_signs) &&
+(g.m_schema.m_integralDigits != nilVAREXISchema.m_integralDigits) &&
+(g.m_schema.m_reverseFractionalDigits != nilVAREXISchema.m_reverseFractionalDigits) &&
+(g.m_schema.m_integers != nilVAREXISchema.m_integers) &&
+(g.m_schema.m_longs != nilVAREXISchema.m_longs) &&
+(g.m_schema.m_datetimes != nilVAREXISchema.m_datetimes) &&
+(g.m_schema.m_durations != nilVAREXISchema.m_durations) &&
+(g.m_schema.m_binaries != nilVAREXISchema.m_binaries) &&
+(g.m_schema.m_variantTypes != nilVAREXISchema.m_variantTypes) &&
+(g.m_schema.m_variants != nilVAREXISchema.m_variants) &&
+(g.m_schema.m_computedDatetimes != nilVAREXISchema.m_computedDatetimes) &&
+(g.m_schema.m_variantCharacters != nilVAREXISchema.m_variantCharacters) &&
+(g.m_schema.m_n_stypes != nilVAREXISchema.m_n_stypes) &&
+(g.m_schema.ancestryIds != nilVAREXISchema.ancestryIds) &&
+(g.m_schema.m_stypes_end != nilVAREXISchema.m_stypes_end) &&
+(g.m_schema.m_grammars != nilVAREXISchema.m_grammars) &&
+(g.m_schema.m_productions != nilVAREXISchema.m_productions) &&
+(g.m_schema.m_eventTypes != nilVAREXISchema.m_eventTypes) &&
+(g.m_schema.m_eventData != nilVAREXISchema.m_eventData) &&
+(g.m_schema.m_grammarCount != nilVAREXISchema.m_grammarCount) &&
+(g.m_schema.m_fragmentINodes != nilVAREXISchema.m_fragmentINodes) &&
+(g.m_schema.m_n_fragmentElems != nilVAREXISchema.m_n_fragmentElems) &&
+(g.m_schema.m_globalElementsDirectory != nilVAREXISchema.m_globalElementsDirectory) &&
+(g.m_schema.m_globalAttributesDirectory != nilVAREXISchema.m_globalAttributesDirectory) &&
+(g.m_schema.m_globalTypesDirectory != nilVAREXISchema.m_globalTypesDirectory) &&
+(g.m_schema.m_buitinTypes != nilVAREXISchema.m_buitinTypes) &&
+(g.m_schema.m_globalElems != nilVAREXISchema.m_globalElems) &&
+(g.m_schema.m_globalAttrs != nilVAREXISchema.m_globalAttrs) */
