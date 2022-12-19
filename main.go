@@ -9,6 +9,7 @@ import (
 
 	//"bytes"
 	"reflect"
+	"unsafe"
 )
 
 func myReverse(s string) (result string) {
@@ -2230,6 +2231,7 @@ var VAREventType EventType = EventType{
 	ITEM_SCHEMA_TYPE:             22,
 	ITEM_SCHEMA_AT_INVALID_VALUE: 23,
 }
+var nilVAREventType EventType
 
 func (e *EventType) getNameId() int { //public final int getNameId() {
 	return e.m_nameId
@@ -2720,41 +2722,41 @@ func (e *EventCodeTuple) thisCreateEventCodeTuple(var1 []string, var2 int, var3 
 		var13 = 0
 	}
 
-	var var14 bool = GrammarOptions.isPermitDeviation(var2) //boolean var14 = GrammarOptions.isPermitDeviation(var2);
+	var var14 bool = isPermitDeviation(var2) //boolean var14 = GrammarOptions.isPermitDeviation(var2);
 
 	if (var4 != nil) || (!var14) { //assert var4 == null || var14;
 		panic("EventCodeTuple.class, func thisCreateEventCodeTuple, (var4 != null) || (!var14)")
 	}
 
-	var var15 bool = GrammarOptions.hasDTD(var2) //boolean var15 = GrammarOptions.hasDTD(var2);
-	var var16 bool = GrammarOptions.hasCM(var2)  //boolean var16 = GrammarOptions.hasCM(var2);
-	var var17 bool = GrammarOptions.hasPI(var2)  //boolean var17 = GrammarOptions.hasPI(var2);
-	var var18 bool                               //boolean var18;
-	var var19 bool                               //boolean var19;
-	var var20 bool                               //boolean var20;
-	var var21 bool                               //boolean var21;
-	var var22 bool                               //boolean var22;
-	if var6 {                                    //if (var6) {
-		if e.grammarType == 4 { //if (this.grammarType == 4) {
+	var var15 bool = hasDTD(var2) //boolean var15 = GrammarOptions.hasDTD(var2);
+	var var16 bool = hasCM(var2)  //boolean var16 = GrammarOptions.hasCM(var2);
+	var var17 bool = hasPI(var2)  //boolean var17 = GrammarOptions.hasPI(var2);
+	var var18 bool                //boolean var18;
+	var var19 bool                //boolean var19;
+	var var20 bool                //boolean var20;
+	var var21 bool                //boolean var21;
+	var var22 bool                //boolean var22;
+	if var6 {                     //if (var6) {
+		if VARGrammar.grammarType == 4 { //if (this.grammarType == 4) {
 			var20 = true //var20 = true;
 			var21 = true //var21 = true;
 		} else { //} else {
-			if e.grammarType == 5 { //assert this.grammarType == 5;
+			if VARGrammar.grammarType == 5 { //assert this.grammarType == 5;
 				panic("EventCodeTuple.class, func thisCreateEventCodeTuple, e.grammarType == 5 ")
 			}
 			if !var8 { //if (!var8) {
-				var22 = !GrammarOptions.isXsiNilTypeRestricted(var2) //var22 = !GrammarOptions.isXsiNilTypeRestricted(var2);
-				var21 = var22                                        //var21 = var22;
-				var20 = var22                                        //var20 = var22;
+				var22 = !isXsiNilTypeRestricted(var2) //var22 = !GrammarOptions.isXsiNilTypeRestricted(var2);
+				var21 = var22                         //var21 = var22;
+				var20 = var22                         //var20 = var22;
 			} else { //} else {
-				var22 = GrammarOptions.isXsiNilTypeRestricted(var2)                                 //var22 = GrammarOptions.isXsiNilTypeRestricted(var2);
-				var21 = !var22 || VARGrammar.schema.isTypableType(this.schema.getTypeOfElem(var12)) //var21 = !var22 || this.schema.isTypableType(this.schema.getTypeOfElem(var12));
-				var20 = !var22 || VARGrammar.schema.isNillableElement(var12)                        //var20 = !var22 || this.schema.isNillableElement(var12);
+				var22 = isXsiNilTypeRestricted(var2)                                                      //var22 = GrammarOptions.isXsiNilTypeRestricted(var2);
+				var21 = !var22 || VARGrammar.schema.isTypableType(VARGrammar.schema.getTypeOfElem(var12)) //var21 = !var22 || this.schema.isTypableType(this.schema.getTypeOfElem(var12));
+				var20 = !var22 || VARGrammar.schema.isNillableElement(var12)                              //var20 = !var22 || this.schema.isNillableElement(var12);
 			}
 		}
 
-		var18 = GrammarOptions.hasNS(var2) //var18 = GrammarOptions.hasNS(var2);
-		var19 = GrammarOptions.hasSC(var2) //var19 = GrammarOptions.hasSC(var2);
+		var18 = hasNS(var2) //var18 = GrammarOptions.hasNS(var2);
+		var19 = hasSC(var2) //var19 = GrammarOptions.hasSC(var2);
 
 	} else { //} else {
 		var19 = false //var19 = false;
@@ -2763,27 +2765,27 @@ func (e *EventCodeTuple) thisCreateEventCodeTuple(var1 []string, var2 int, var3 
 		var21 = false //var21 = false;
 	}
 
-	var22 = false             //var22 = false;
-	var var23 EventType = nil //EventType var23 = null;
-	var var24 EventType = nil //EventType var24 = null;
-	var var25 EventType = nil //EventType var25 = null;
-	var var26 EventType = nil //EventType var26 = null;
-	var var27 EventType = nil //EventType var27 = null;
-	var var28 EventType = nil //EventType var28 = null;
-	var var29 EventType = nil //EventType var29 = null;
-	var var30 EventType = nil //EventType var30 = null;
-	var var31 EventType = nil //EventType var31 = null;
-	var var32 EventType = nil //EventType var32 = null;
-	var var33 EventType = nil //EventType var33 = null;
-	var var34 EventType = nil //EventType var34 = null;
-	var var35 bool = false    //boolean var35 = false;
-	var var36 bool = false    //boolean var36 = false;
-	var var37 bool = false    //boolean var37 = false;
-	var var38 int = 0         //int var38 = 0;
-	var var39 int = 0         //int var39 = 0;
-	var var41 int = len(var1) //int var41 = var1.size();
-	var var40 int             //int var40;
-	if var14 {                //if (var14) {
+	var22 = false                         //var22 = false;
+	var var23 EventType = nilVAREventType //EventType var23 = null;
+	var var24 EventType = nilVAREventType //EventType var24 = null;
+	var var25 EventType = nilVAREventType //EventType var25 = null;
+	var var26 EventType = nilVAREventType //EventType var26 = null;
+	var var27 EventType = nilVAREventType //EventType var27 = null;
+	var var28 EventType = nilVAREventType //EventType var28 = null;
+	var var29 EventType = nilVAREventType //EventType var29 = null;
+	var var30 EventType = nilVAREventType //EventType var30 = null;
+	var var31 EventType = nilVAREventType //EventType var31 = null;
+	var var32 EventType = nilVAREventType //EventType var32 = null;
+	var var33 EventType = nilVAREventType //EventType var33 = null;
+	var var34 EventType = nilVAREventType //EventType var34 = null;
+	var var35 bool = false                //boolean var35 = false;
+	var var36 bool = false                //boolean var36 = false;
+	var var37 bool = false                //boolean var37 = false;
+	var var38 int = 0                     //int var38 = 0;
+	var var39 int = 0                     //int var39 = 0;
+	var var41 int = len(var1)             //int var41 = var1.size();
+	var var40 int                         //int var40;
+	if var14 {                            //if (var14) {
 		for var40 = 0; var40 < var41; var40++ { //for(var40 = 0; var40 < var41; ++var40) {
 			var var42 EventType = EventType(var1.get(var40)) //EventType var42 = (EventType)var1.get(var40);
 			if var42.itemType == 9 {                         //if (var42.itemType == 9) {
@@ -2916,7 +2918,7 @@ func (e *EventCodeTuple) thisCreateEventCodeTuple(var1 []string, var2 int, var3 
 	if var22 {        //if (var22) {
 		var51[var52] = var23 // var51[var52++] = var23;
 		var52++
-		var44[var56] = var23 // var44[var56++] = var23;
+		var44[var56] = (*(*EventCode)(unsafe.Pointer(&var23))) // var44[var56++] = var23;///полезная
 		var56++
 	}
 
@@ -2964,7 +2966,7 @@ func (e *EventCodeTuple) thisCreateEventCodeTuple(var1 []string, var2 int, var3 
 	if var19 { //if (var19) {
 		var51[var52] = var27 // var51[var52++] = var27;
 		var52++
-		var44[var56] = var27 // var44[var56++] = var27;
+		var44[var56] = var27 // var44[var56++] = var27;*(*EventCode)(unsafe.Pointer(&var23))
 		var56++
 	}
 
@@ -3470,6 +3472,10 @@ var VARGrammarOptions GrammarOptions = GrammarOptions{
 
 func (g *GrammarOptions) GrammarOptions() {}
 
+func (g *GrammarOptions) MyMetodIsPermitDeviation(var0 int) bool { //public static boolean isPermitDeviation(short var0) {
+	return (var0 & 2) != 0 //return (var0 & 2) != 0;
+}
+
 func (g *GrammarOptions) restrictXsiNilType(var0 int, var1 bool) int {
 	if var1 {
 		return (var0 | 1)
@@ -3480,12 +3486,10 @@ func (g *GrammarOptions) restrictXsiNilType(var0 int, var1 bool) int {
 func (g *GrammarOptions) isXsiNilTypeRestricted(var0 int) bool {
 	return ((var0 & 1) != 0)
 }
-
-/*
-func (g *GrammarOptions) isPermitDeviation(var0 int) bool {
-	return ((var0 & 2) != 0)
+func isXsiNilTypeRestricted(var0 int) bool {
+	return ((var0 & 1) != 0)
 }
-*/
+
 func isPermitDeviation(var0 int) bool {
 	return ((var0 & 2) != 0)
 }
@@ -3493,8 +3497,14 @@ func isPermitDeviation(var0 int) bool {
 func (g *GrammarOptions) hasNS(var0 int) bool {
 	return ((var0 & 4) != 0)
 }
+func hasNS(var0 int) bool {
+	return ((var0 & 4) != 0)
+}
 
 func (g *GrammarOptions) hasSC(var0 int) bool {
+	return ((var0 & 8) != 0)
+}
+func hasSC(var0 int) bool {
 	return ((var0 & 8) != 0)
 }
 
@@ -3502,11 +3512,21 @@ func (g *GrammarOptions) hasDTD(var0 int) bool {
 	return ((var0 & 16) != 0)
 }
 
+func hasDTD(var0 int) bool {
+	return ((var0 & 16) != 0)
+}
+
 func (g *GrammarOptions) hasCM(var0 int) bool {
+	return ((var0 & 32) != 0)
+}
+func hasCM(var0 int) bool {
 	return ((var0 & 32) != 0)
 }
 
 func (g *GrammarOptions) hasPI(var0 int) bool {
+	return ((var0 & 64) != 0)
+}
+func hasPI(var0 int) bool {
 	return ((var0 & 64) != 0)
 }
 
