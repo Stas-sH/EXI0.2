@@ -2787,22 +2787,22 @@ func (e *EventCodeTuple) thisCreateEventCodeTuple(var1 []string, var2 int, var3 
 	var var40 int                         //int var40;
 	if var14 {                            //if (var14) {
 		for var40 = 0; var40 < var41; var40++ { //for(var40 = 0; var40 < var41; ++var40) {
-			var var42 EventType = EventType(var1.get(var40)) //EventType var42 = (EventType)var1.get(var40);
-			if var42.itemType == 9 {                         //if (var42.itemType == 9) {
+			var var42 EventType = (*(*EventType)(unsafe.Pointer(&var1[var40]))) //EventType(var1.get(var40)) //EventType var42 = (EventType)var1.get(var40);
+			if (*(*EventCode)(unsafe.Pointer(&var42))).itemType == 9 {          //if var42.itemType == 9 { //if (var42.itemType == 9) { ///EventCode
 				break // break;
 			}
 		}
 
 		if var40 == var41 { //if (var40 == var41) {
-			var22 = true                                            //var22 = true;
-			var23 = EventTypeFactory.creatEndElement(byte(2), var5) //var23 = EventTypeFactory.creatEndElement((byte)2, var5);
-			var38++                                                 // ++var38;
+			var22 = true                           //var22 = true;
+			var23 = creatEndElement(byte(2), var5) //var23 = EventTypeFactory.creatEndElement((byte)2, var5);
+			var38++                                // ++var38;
 		}
 
-		var30 = thisEventType1(byte(2), var5, byte(5), e.retrieveEXIGrammar(var10)) //var30 = new EventType((byte)2, var5, (byte)5, this.retrieveEXIGrammar(var10));
-		var31 = thisEventType1(byte(2), var5, byte(3), e.retrieveEXIGrammar(var10)) //var31 = new EventType((byte)2, var5, (byte)3, this.retrieveEXIGrammar(var10));
-		var38 = var38 + 2                                                           //var38 += 2;
-		if var4 != nil {                                                            //if (var4 != null) {
+		var30 = thisEventType1(byte(2), var5, 5 /*, VARGrammar.retrieveEXIGrammar(var10)*/) //var30 = new EventType((byte)2, var5, (byte)5, this.retrieveEXIGrammar(var10));
+		var31 = thisEventType1(byte(2), var5, 3 /*, VARGrammar.retrieveEXIGrammar(var10)*/) //var31 = new EventType((byte)2, var5, (byte)3, this.retrieveEXIGrammar(var10));
+		var38 = var38 + 2                                                                   //var38 += 2;
+		if var4 != nil {                                                                    //if (var4 != null) {
 			var28 = thisEventType1(byte(2), var5, 17 /*, (IGrammar)null*/) //var28 = new EventType((byte)2, var5, (byte)17, (IGrammar)null);
 			var29 = thisEventType1(byte(3), var5, 8 /*, (IGrammar)null*/)  //var29 = new EventType((byte)3, var5, (byte)8, (IGrammar)null);
 			var38 = var38 + 2                                              //var38 += 2;
@@ -2875,29 +2875,29 @@ func (e *EventCodeTuple) thisCreateEventCodeTuple(var1 []string, var2 int, var3 
 
 	var var55 ArrayEventCodeTuple                     //ArrayEventCodeTuple var55 = new ArrayEventCodeTuple();
 	var var51 []EventType = make([]EventType, 50, 50) //EventType[] var51 = new EventType[var50];
-
+	var var43 []EventCode
 	if var35 { //EventCode[] var43 = new EventCode[var35 ? var41 + 1 : var41];
-		var var43 []EventCode = make([]EventCode, var41+1, var41+1)
+		var43 = make([]EventCode, var41+1, var41+1)
 	} else {
-		var var43 []EventCode = make([]EventCode, var41, var41)
+		var43 = make([]EventCode, var41, var41)
 	}
 
 	var var52 int = 0 //int var52 = 0;
 
-	if var24 != nil { //if (var24 != null) {
+	if !(reflect.DeepEqual(var24, nilVAREventType)) { //nilVAREventType { //if (var24 != null) {
 		var51[var52] = var24 // var51[var52++] = var24;
 		var52++
 	}
 
-	if var25 != nil { //if (var25 != null) {
+	if !(reflect.DeepEqual(var25, nilVAREventType)) { //var25 != nil { //if (var25 != null) {
 		var51[var52] = var25 // var51[var52++] = var25;
 		var52++
 	}
 
 	for var40 = 0; var40 < var41; var40++ { //for(var40 = 0; var40 < var41; ++var40) {
-		var var53 EventType = EventType(var1.get(var40)) // EventType var53 = (EventType)var1.get(var40);
-		var51[var52+var40] = var53                       // var51[var52 + var40] = var53;
-		var43[var40] = var53                             // var43[var40] = var53;
+		var var53 EventType = (*(*EventType)(unsafe.Pointer(&(var1[var40])))) //EventType(var1[var40]) // EventType var53 = (EventType)var1.get(var40);
+		var51[var52+var40] = var53                                            // var51[var52 + var40] = var53;
+		var43[var40] = *(*EventCode)(unsafe.Pointer(&var53))                  // var43[var40] = var53;
 	}
 
 	var52 = var52 + var41 //var52 += var41;
@@ -2923,19 +2923,19 @@ func (e *EventCodeTuple) thisCreateEventCodeTuple(var1 []string, var2 int, var3 
 	}
 
 	if var21 { //if (var21) {
-		var44[var56] = var24 // var44[var56++] = var24;
+		var44[var56] = *(*EventCode)(unsafe.Pointer(&var24)) // var44[var56++] = var24;
 		var56++
 	}
 
 	if var20 { //if (var20) {
-		var44[var56] = var25 // var44[var56++] = var25;
+		var44[var56] = *(*EventCode)(unsafe.Pointer(&var25)) // var44[var56++] = var25;
 		var56++
 	}
 
 	if var36 { //if (var36) {
 		var51[var52] = var28 // var51[var52++] = var28;
 		var52++
-		var44[var56] = var28 // var44[var56++] = var28;
+		var44[var56] = *(*EventCode)(unsafe.Pointer(&var28)) // var44[var56++] = var28;
 		var56++
 		var45 = make([]EventCode, var13+1, var13+1) // var45 = new EventCode[var13 + 1];
 		var myvar ArrayEventCodeTuple
@@ -2944,61 +2944,61 @@ func (e *EventCodeTuple) thisCreateEventCodeTuple(var1 []string, var2 int, var3 
 		var56++
 
 		for var40 = 0; var40 < var13; var40++ { //for(var40 = 0; var40 < var13; ++var40) {
-			var51[var52] = EventType(var4.get(var40)) // var51[var52++] = (EventType)var4.get(var40);
+			var51[var52] = EventType(var4[var40]) // var51[var52++] = (EventType)var4.get(var40);
 			var52++
 
-			var45[var40] = EventCode(var4.get(var40)) // var45[var40] = (EventCode)var4.get(var40);
+			var45[var40] = *(*EventCode)(unsafe.Pointer(&(var4[var40]))) // var45[var40] = (EventCode)var4.get(var40);
 		}
 
 		var51[var52] = var29 // var51[var52++] = var29;
 		var52++
 
-		var45[var13] = var29 // var45[var13] = var29;
+		var45[var13] = *(*EventCode)(unsafe.Pointer(&var29)) // var45[var13] = var29;
 	}
 
 	if var18 { //if (var18) {
 		var51[var52] = var26 // var51[var52++] = var26;
 		var52++
-		var44[var56] = var26 // var44[var56++] = var26;
+		var44[var56] = *(*EventCode)(unsafe.Pointer(&var26)) // var44[var56++] = var26;
 		var56++
 	}
 
 	if var19 { //if (var19) {
 		var51[var52] = var27 // var51[var52++] = var27;
 		var52++
-		var44[var56] = var27 // var44[var56++] = var27;*(*EventCode)(unsafe.Pointer(&var23))
+		var44[var56] = *(*EventCode)(unsafe.Pointer(&var27)) // var44[var56++] = var27;*(*EventCode)(unsafe.Pointer(&var23))
 		var56++
 	}
 
 	if var14 { //if (var14) {
 		var51[var52] = var30 //var51[var52++] = var30;
 		var52++
-		var44[var56] = var30 //var44[var56++] = var30;
+		var44[var56] = *(*EventCode)(unsafe.Pointer(&var30)) //var44[var56++] = var30;
 		var56++
 		var51[var52] = var31 //var51[var52++] = var31;
 		var52++
-		var44[var56] = var31 //var44[var56++] = var31;
+		var44[var56] = *(*EventCode)(unsafe.Pointer(&var31)) //var44[var56++] = var31;
 		var56++
 	}
 
 	if var15 { //if (var15) {
 		var51[var52] = var32 // var51[var52++] = var32;
 		var52++
-		var44[var56] = var32 // var44[var56++] = var32;
+		var44[var56] = *(*EventCode)(unsafe.Pointer(&var32)) // var44[var56++] = var32;
 		var56++
 	}
 
 	if var16 { //if (var16) {
 		var51[var52] = var33 // var51[var52++] = var33;
 		var52++
-		var46[var54] = var33 // var46[var54++] = var33;
+		var46[var54] = *(*EventCode)(unsafe.Pointer(&var33)) // var46[var54++] = var33;
 		var54++
 	}
 
 	if var17 { //if (var17) {
 		var51[var52] = var34 //var51[var52++] = var34;
 		var52++
-		var46[var54] = var34 //var46[var54++] = var34;
+		var46[var54] = *(*EventCode)(unsafe.Pointer(&var34)) //var46[var54++] = var34;
 		var54++
 	}
 
@@ -3055,6 +3055,10 @@ func createEventTypeSchemaAttributeInvalid(var1 EventType, var2 EventTypeList) E
 	var newEventType EventType
 	newEventType = thisEventType2(var1.uri, var1.name, var1.getURIId(), var1.getNameId(), byte(3), var2, 23 /*, var1.subsequentGrammar*/)
 	return newEventType //return new EventType(var1.uri, var1.name, var1.getURIId(), var1.getNameId(), (byte)3, var2, (byte)23, var1.subsequentGrammar);
+}
+
+func createEventTypeXsiType(var1 EventTypeList) { //private EventType createEventTypeXsiType(EventTypeList var1) {
+	//return new EventType("http://www.w3.org/2001/XMLSchema-instance", "type", 2, 1, (byte)2, var1, (byte)22, (IGrammar)null);
 }
 
 ///end SchemaInformedGrammar.clas///
@@ -3563,6 +3567,11 @@ func createEndDocument(var0 EventTypeList) EventType { //static EventType create
 
 func createStartDocument(var0 EventTypeList) EventType { // static EventType createStartDocument(EventTypeList var0) {
 	return EventType3("", "", -1, -1, byte(1), var0, byte(13), 0 /*, (IGrammar)null*/) //	return new EventType((String)null, (String)null, -1, -1, (byte)1, var0, (byte)13, (byte)0, (IGrammar)null);
+}
+
+func createStartElement(var0 int, var1 int, var2 string, var3 string, var4 EventTypeList, var5 EXIGrammarUse) EventTypeElement { //static EventTypeElement createStartElement(int var0, int var1, String var2, String var3, EventTypeList var4, EXIGrammarUse var5) {
+	var myvar EventType = VAREventTypeElement.EventTypeElement1(var0, var2, var1, var3, var4, var5 /*, (EXIGrammar)null*/) //return new EventTypeElement(var0, var2, var1, var3, var4, var5, (EXIGrammar)null);
+	return *(*EventTypeElement)(unsafe.Pointer(&myvar))
 }
 
 ///end EventTypeFactory.class///
