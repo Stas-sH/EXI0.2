@@ -582,8 +582,10 @@ func (f *FragmentGrammar) thisFragmentGrammar(var1 GrammarCache) FragmentGrammar
 	//super((byte)3, var1);
 	var var2 int = var1.grammarOptions //short var2 = var1.grammarOptions;
 	var var3 int
-	if VARGrammar.schema != nil { //int var3 = this.schema != null ? this.schema.getFragmentElemCount() : 0;
-		var3 = VARGrammar.schema.getFragmentElemCount()
+	var myvarVARGrammar Grammar = VARGrammar
+
+	if !(reflect.DeepEqual(myvarVARGrammar.schema, nilVAREXISchema)) { //int var3 = this.schema != null ? this.schema.getFragmentElemCount() : 0;
+		var3 = myvarVARGrammar.schema.getFragmentElemCount()
 	} else {
 		var3 = 0
 	}
@@ -596,24 +598,24 @@ func (f *FragmentGrammar) thisFragmentGrammar(var1 GrammarCache) FragmentGrammar
 	//this.m_eventTypeLists[var4] = new ArrayEventTypeList();
 	//}
 
-	var var11 []EventType = []EventType{EventTypeFactory.createStartDocument(f.m_eventTypeLists[0])} //EventType[] var11 = new EventType[]{EventTypeFactory.createStartDocument(this.m_eventTypeLists[0])};
-	var var12 ArrayEventCodeTuple                                                                    //ArrayEventCodeTuple var12 = new ArrayEventCodeTuple();
-	var12.setItems([]EventType{var11[0]})                                                            //var12.setItems(new EventType[]{var11[0]});
-	f.m_eventCodes[0] = var12                                                                        //this.m_eventCodes[0] = var12;
-	f.m_eventTypes[0] = var11                                                                        //this.m_eventTypes[0] = var11;
-	var var5 bool = false                                                                            //boolean var5 = false;
-	var var13 ArrayEventCodeTuple = nil                                                              //ArrayEventCodeTuple var13 = null;
-	var var7 int = var3 + 2                                                                          //int var7 = var3 + 2;
-	var var8 int = 0                                                                                 //int var8 = 0;
-	var var9 bool                                                                                    //boolean var9;
-	if GrammarOptions.hasCM(var2) {                                                                  //if (var9 = GrammarOptions.hasCM(var2)) {
-		var9 = GrammarOptions.hasCM(var2)
+	var var11 []EventType = []EventType{createStartDocument((*(*EventTypeList)(unsafe.Pointer(&(f.m_eventTypeLists[0])))))} //EventType[] var11 = new EventType[]{EventTypeFactory.createStartDocument(this.m_eventTypeLists[0])};
+	var var12 ArrayEventCodeTuple                                                                                           //ArrayEventCodeTuple var12 = new ArrayEventCodeTuple();
+	var12.setItems(*(*([]EventCode))(unsafe.Pointer(&([]EventType{var11[0]}))))                                             //var12.setItems(new EventType[]{var11[0]});
+	f.m_eventCodes[0] = (*(*EventCodeTuple)(unsafe.Pointer(&var12)))                                                        //this.m_eventCodes[0] = var12;
+	f.m_eventTypes[0] = var11                                                                                               //this.m_eventTypes[0] = var11;
+	var var5 bool = false                                                                                                   //boolean var5 = false;
+	var var13 ArrayEventCodeTuple                                                                                           //ArrayEventCodeTuple var13 = null;
+	var var7 int = var3 + 2                                                                                                 //int var7 = var3 + 2;
+	var var8 int = 0                                                                                                        //int var8 = 0;
+	var var9 bool                                                                                                           //boolean var9;
+	if hasCM(var2) {                                                                                                        //if (var9 = GrammarOptions.hasCM(var2)) {
+		var9 = hasCM(var2)
 		var8++ //++var8;
 	}
 
-	var var10 bool                  //boolean var10;
-	if GrammarOptions.hasPI(var2) { //if (var10 = GrammarOptions.hasPI(var2)) {
-		var10 = GrammarOptions.hasPI(var2)
+	var var10 bool   //boolean var10;
+	if hasPI(var2) { //if (var10 = GrammarOptions.hasPI(var2)) {
+		var10 = hasPI(var2)
 		var8++ //++var8;
 	}
 
@@ -622,8 +624,8 @@ func (f *FragmentGrammar) thisFragmentGrammar(var1 GrammarCache) FragmentGrammar
 		var7++      //++var7;
 	}
 
-	if VARGrammar.schema != nil { //this.m_fragmentElems = this.schema != null ? this.schema.getFragmentINodes() : null;
-		f.m_fragmentElems = VARGrammar.schema.getFragmentINodes()
+	if !(reflect.DeepEqual(myvarVARGrammar.schema, nilVAREXISchema)) { //this.m_fragmentElems = this.schema != null ? this.schema.getFragmentINodes() : null;
+		f.m_fragmentElems = myvarVARGrammar.schema.getFragmentINodes()
 	} else {
 		f.m_fragmentElems = nil
 	}
@@ -649,42 +651,42 @@ func (f *FragmentGrammar) thisFragmentGrammar(var1 GrammarCache) FragmentGrammar
 
 		var var19 EXIGrammarUse //= nil //EXIGrammarUse var19 = null;
 		if var17 {              //if (var17) {
-			var19 = var1.exiGrammarUses[VARGrammar.schema.getSerialOfElem(var18)] //var19 = var1.exiGrammarUses[this.schema.getSerialOfElem(var18)];
+			var19 = var1.exiGrammarUses[myvarVARGrammar.schema.getSerialOfElem(var18)] //var19 = var1.exiGrammarUses[this.schema.getSerialOfElem(var18)];
 		}
 
-		var var20 int = VARGrammar.schema.getUriOfElem(var18)                                                                                                                                   //int var20 = this.schema.getUriOfElem(var18);
-		var var21 int = VARGrammar.schema.getLocalNameOfElem(var18)                                                                                                                             //int var21 = this.schema.getLocalNameOfElem(var18);
-		var var22 EventTypeElement = EventTypeFactory.createStartElement(var20, var21, VARGrammar.schema.uris[var20], VARGrammar.schema.localNames[var20][var21], f.m_eventTypeLists[1], var19) //EventTypeElement var22 = EventTypeFactory.createStartElement(var20, var21, this.schema.uris[var20], this.schema.localNames[var20][var21], this.m_eventTypeLists[1], var19);
-		var14[var16] = var11[var16]                                                                                                                                                             //var14[var16] = var11[var16] = var22;
-		var11[var16] = var22
+		var var20 int = myvarVARGrammar.schema.getUriOfElem(var18)                                                                                                                                                               //int var20 = this.schema.getUriOfElem(var18);
+		var var21 int = myvarVARGrammar.schema.getLocalNameOfElem(var18)                                                                                                                                                         //int var21 = this.schema.getLocalNameOfElem(var18);
+		var var22 EventTypeElement = createStartElement(var20, var21, myvarVARGrammar.schema.uris[var20], myvarVARGrammar.schema.localNames[var20][var21], (*(*EventTypeList)(unsafe.Pointer(&(f.m_eventTypeLists[1])))), var19) //EventTypeElement var22 = EventTypeFactory.createStartElement(var20, var21, this.schema.uris[var20], this.schema.localNames[var20][var21], this.m_eventTypeLists[1], var19);
+		var14[var16] = (*(*EventCode)(unsafe.Pointer(&(var11[var16]))))                                                                                                                                                          //var11[var16]                                                                                                                                                      //var14[var16] = var11[var16] = var22;
+		var11[var16] = (*(*EventType)(unsafe.Pointer(&var22)))                                                                                                                                                                   //var22
 	}
 
-	var14[var16] = var11[var16]
-	var11[var16] = thisEventType1(byte(1), f.m_eventTypeLists[1], 5 /*, (IGrammar)null*/) //var14[var16] = var11[var16] = new EventType((byte)1, this.m_eventTypeLists[1], (byte)5, (IGrammar)null);
-	var16++                                                                               //++var16;
-	var14[var16] = var11[var16]
-	var11[var16] = EventTypeFactory.createEndDocument(f.m_eventTypeLists[1]) //var14[var16] = var11[var16] = EventTypeFactory.createEndDocument(this.m_eventTypeLists[1]);
-	var16++                                                                  //++var16;
-	if var5 {                                                                //if (var5) {
+	var14[var16] = (*(*EventCode)(unsafe.Pointer(&(var11[var16]))))                                                               //var11[var16]
+	var11[var16] = thisEventType1(byte(1), (*(*EventTypeList)(unsafe.Pointer(&(f.m_eventTypeLists[1])))), 5 /*, (IGrammar)null*/) //var14[var16] = var11[var16] = new EventType((byte)1, this.m_eventTypeLists[1], (byte)5, (IGrammar)null);
+	var16++                                                                                                                       //++var16;
+	var14[var16] = (*(*EventCode)(unsafe.Pointer(&(var11[var16]))))                                                               //var11[var16]
+	var11[var16] = createEndDocument((*(*EventTypeList)(unsafe.Pointer(&(f.m_eventTypeLists[1])))))                               //var14[var16] = var11[var16] = EventTypeFactory.createEndDocument(this.m_eventTypeLists[1]);
+	var16++                                                                                                                       //++var16;
+	if var5 {                                                                                                                     //if (var5) {
 		var var15 []EventCode = make([]EventCode, var8, var8) //var15 = new EventCode[var8];
 		var myvar1 ArrayEventCodeTuple
-		var13 = myvar1       //var13 = new ArrayEventCodeTuple();
-		var14[var16] = var13 //var14[var16] = var13;
-		var var23 int = 0    //int var23 = 0;
-		var var24 EventType  //EventType var24;
-		if var9 {            //if (var9) {
-			var24 = thisEventType1(byte(2), f.m_eventTypeLists[1], 1 /*, (IGrammar)null*/) //var24 = new EventType((byte)2, this.m_eventTypeLists[1], (byte)1, (IGrammar)null);
-			var11[var16] = var24                                                           //var11[var16++] = var24;
+		var13 = myvar1                                         //var13 = new ArrayEventCodeTuple();
+		var14[var16] = (*(*EventCode)(unsafe.Pointer(&var13))) //var13 //var14[var16] = var13;
+		var var23 int = 0                                      //int var23 = 0;
+		var var24 EventType                                    //EventType var24;
+		if var9 {                                              //if (var9) {
+			var24 = thisEventType1(byte(2), (*(*EventTypeList)(unsafe.Pointer(&(f.m_eventTypeLists[1])))), 1 /*, (IGrammar)null*/) //var24 = new EventType((byte)2, this.m_eventTypeLists[1], (byte)1, (IGrammar)null);
+			var11[var16] = var24                                                                                                   //var11[var16++] = var24;
 			var16++
-			var15[var23] = var24 //var15[var23++] = var24;
+			var15[var23] = (*(*EventCode)(unsafe.Pointer(&var24))) //var24 //var15[var23++] = var24;
 			var23++
 		}
 
 		if var10 { //if (var10) {
-			var24 = thisEventType1(byte(2), f.m_eventTypeLists[1], 0 /*, (IGrammar)null*/) //var24 = new EventType((byte)2, this.m_eventTypeLists[1], (byte)0, (IGrammar)null);
-			var11[var16] = var24                                                           //var11[var16++] = var24;
+			var24 = thisEventType1(byte(2), (*(*EventTypeList)(unsafe.Pointer(&(f.m_eventTypeLists[1])))), 0 /*, (IGrammar)null*/) //var24 = new EventType((byte)2, this.m_eventTypeLists[1], (byte)0, (IGrammar)null);
+			var11[var16] = var24                                                                                                   //var11[var16++] = var24;
 			var16++
-			var15[var23] = var24 //var15[var23++] = var24;
+			var15[var23] = (*(*EventCode)(unsafe.Pointer(&var24))) //var15[var23++] = var24;
 			var23++
 		}
 	}
@@ -698,8 +700,8 @@ func (f *FragmentGrammar) thisFragmentGrammar(var1 GrammarCache) FragmentGrammar
 		}
 	}
 
-	f.m_eventCodes[1] = var12 //this.m_eventCodes[1] = var12;
-	f.m_eventTypes[1] = var11 //this.m_eventTypes[1] = var11;
+	f.m_eventCodes[1] = (*(*EventCodeTuple)(unsafe.Pointer(&var12))) //var12 //this.m_eventCodes[1] = var12;
+	f.m_eventTypes[1] = var11                                        //this.m_eventTypes[1] = var11;
 
 	for var4 = 0; var4 < 2; var4++ { //for(var4 = 0; var4 < 2; ++var4) {
 		f.m_eventTypeLists[var4].setItems(f.m_eventTypes[var4]) //this.m_eventTypeLists[var4].setItems(this.m_eventTypes[var4]);
@@ -1140,6 +1142,14 @@ var nilVAREXISchema = EXISchema{
 	m_globalElems:               make([]int, 0, 0),
 	m_globalAttrs:               make([]int, 0, 0),
 	//datatypeFactory    :         DatatypeFactory///to do
+}
+
+func (e *EXISchema) getFragmentINodes() []int { //public int[] getFragmentINodes() {
+	return e.m_fragmentINodes //return this.m_fragmentINodes;
+}
+
+func (e *EXISchema) getFragmentElemCount() int { //public int getFragmentElemCount() {
+	return e.m_n_fragmentElems //return this.m_n_fragmentElems;
 }
 
 func (e *EXISchema) isTypableType(var1 int) bool { //public boolean isTypableType(int var1) {
