@@ -2916,12 +2916,12 @@ func (e *EventCodeTuple) thisCreateEventCodeTuple(var1 []string, var2 int, var3 
 		var35 = true // var35 = true;
 	}
 
-	var var44 []EventCode = nil         //EventCode[] var44 = null;
-	var var45 []EventCode = nil         //EventCode[] var45 = null;
-	var var46 []EventCode = nil         //EventCode[] var46 = null;
-	var var47 ArrayEventCodeTuple = nil //ArrayEventCodeTuple var47 = null;
-	var var48 ArrayEventCodeTuple = nil //ArrayEventCodeTuple var48 = null;
-	var var49 ArrayEventCodeTuple = nil //ArrayEventCodeTuple var49 = null;
+	var var44 []EventCode = nil   //EventCode[] var44 = null;
+	var var45 []EventCode = nil   //EventCode[] var45 = null;
+	var var46 []EventCode = nil   //EventCode[] var46 = null;
+	var var47 ArrayEventCodeTuple //ArrayEventCodeTuple var47 = null;
+	var var48 ArrayEventCodeTuple //ArrayEventCodeTuple var48 = null;
+	var var49 ArrayEventCodeTuple //ArrayEventCodeTuple var49 = null;
 
 	var var50 int
 	if var39 != 0 { //int var50 = var39 != 0 ? var41 + (var38 - 1) + var39 + var13 : var41 + var38 + var13;
@@ -2961,12 +2961,12 @@ func (e *EventCodeTuple) thisCreateEventCodeTuple(var1 []string, var2 int, var3 
 	if var35 {            //if (var35) {
 		var44 = make([]EventCode, var38, var38) //var44 = new EventCode[var38];
 		var myvar ArrayEventCodeTuple
-		var47 = myvar        //var47 = new ArrayEventCodeTuple();
-		var43[var41] = var47 //var43[var41] = var47;
-		if var37 {           //if (var37) {
-			var46 = make([]EventCode, var39, var39) // var46 = new EventCode[var39];
-			var49 = myvar                           // var49 = new ArrayEventCodeTuple();
-			var44[var38-1] = var49                  //  var44[var38 - 1] = var49;
+		var47 = myvar                                        //var47 = new ArrayEventCodeTuple();
+		var43[var41] = *(*EventCode)(unsafe.Pointer(&var47)) //var43[var41] = var47;
+		if var37 {                                           //if (var37) {
+			var46 = make([]EventCode, var39, var39)                // var46 = new EventCode[var39];
+			var49 = myvar                                          // var49 = new ArrayEventCodeTuple();
+			var44[var38-1] = *(*EventCode)(unsafe.Pointer(&var49)) //  var44[var38 - 1] = var49;
 		}
 	}
 
@@ -2996,8 +2996,8 @@ func (e *EventCodeTuple) thisCreateEventCodeTuple(var1 []string, var2 int, var3 
 		var56++
 		var45 = make([]EventCode, var13+1, var13+1) // var45 = new EventCode[var13 + 1];
 		var myvar ArrayEventCodeTuple
-		var48 = myvar        // var48 = new ArrayEventCodeTuple();
-		var44[var56] = var48 // var44[var56++] = var48;
+		var48 = myvar                                        // var48 = new ArrayEventCodeTuple();
+		var44[var56] = *(*EventCode)(unsafe.Pointer(&var48)) // var44[var56++] = var48;
 		var56++
 
 		for var40 = 0; var40 < var13; var40++ { //for(var40 = 0; var40 < var13; ++var40) {
@@ -3081,8 +3081,8 @@ func (e *EventCodeTuple) thisCreateEventCodeTuple(var1 []string, var2 int, var3 
 		}
 	}
 
-	var3.eventCodeTuple = var55 //var3.eventCodeTuple = var55;
-	var3.eventTypes = var51     //var3.eventTypes = var51;
+	var3.eventCodeTuple = *(*EventCodeTuple)(unsafe.Pointer(&var55)) //var3.eventCodeTuple = var55;
+	var3.eventTypes = *(*EventType)(unsafe.Pointer(&var51))          //var3.eventTypes = var51;
 }
 
 ///end EventCodeTuple.class///
