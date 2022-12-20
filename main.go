@@ -2870,15 +2870,15 @@ func (e *EventCodeTuple) thisCreateEventCodeTuple(var1 []string, var2 int, var3 
 	}
 
 	if var21 { //if (var21) {
-		var24 = e.createEventTypeXsiType(var5) // var24 = this.createEventTypeXsiType(var5);
-		var38++                                // ++var38;
-		var35 = true                           // var35 = true;
+		var24 = createEventTypeXsiType(var5) // var24 = this.createEventTypeXsiType(var5);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		var38++                              // ++var38;
+		var35 = true                         // var35 = true;
 	}
 
 	if var20 { //if (var20) {
-		var25 = e.createEventTypeXsiNil(var5, e.retrieveEXIGrammar(var9)) //var25 = this.createEventTypeXsiNil(var5, this.retrieveEXIGrammar(var9));
-		var38++                                                           //++var38;
-		var35 = true                                                      // var35 = true;
+		var25 = createEventTypeXsiNil(var5 /*, e.retrieveEXIGrammar(var9)*/) //var25 = this.createEventTypeXsiNil(var5, this.retrieveEXIGrammar(var9));////e.retrieveEXIGrammar(var9)//!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		var38++                                                              //++var38;
+		var35 = true                                                         // var35 = true;
 	}
 
 	if var18 { //if (var18) {
@@ -3112,6 +3112,10 @@ func createEventTypeSchemaAttributeInvalid(var1 EventType, var2 EventTypeList) E
 	var newEventType EventType
 	newEventType = thisEventType2(var1.uri, var1.name, var1.getURIId(), var1.getNameId(), byte(3), var2, 23 /*, var1.subsequentGrammar*/)
 	return newEventType //return new EventType(var1.uri, var1.name, var1.getURIId(), var1.getNameId(), (byte)3, var2, (byte)23, var1.subsequentGrammar);
+}
+
+func createEventTypeXsiNil(var1 EventTypeList /*, var2 IGrammar*/) EventType { //private EventType createEventTypeXsiNil(EventTypeList var1, IGrammar var2) {
+	return thisEventType2("http://www.w3.org/2001/XMLSchema-instance", "nil", 2, 0, byte(2), var1, 21 /*, var2*/) //return new EventType("http://www.w3.org/2001/XMLSchema-instance", "nil", 2, 0, (byte)2, var1, (byte)21, var2);
 }
 
 func createEventTypeXsiType(var1 EventTypeList) EventType { //private EventType createEventTypeXsiType(EventTypeList var1) {
