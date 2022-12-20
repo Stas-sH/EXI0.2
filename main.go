@@ -534,7 +534,42 @@ func (b *BuiltinFragmentGrammar) funcBuiltinFragmentGrammar(var1 GrammarCache) G
 }
 
 ///end BuiltinFragmentGrammar.class//
+//ArrayEventCodeTuple.class///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+type ArrayEventCodeTuple struct {
+	myArrParentEventCode [][]EventCode //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+}
 
+func (a *ArrayEventCodeTuple) setItems(var1 []EventCode) { //final void setItems(EventCode[] var1) {!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//assert var1 != null && var1.length > 0;
+	var myvar1 EventCodeTuple = VAREventCodeTuple
+	myvar1.eventCodes = var1                   //this.eventCodes = var1;
+	myvar1.itemsCount = len(myvar1.eventCodes) //this.itemsCount = this.eventCodes.length;
+	var var3 int = 0                           //int var3 = 0;
+
+	for var2 := len(myvar1.eventCodes) - 1; var2 > 0; var3++ { //for(int var2 = this.eventCodes.length - 1; var2 > 0; ++var3) {
+		var2 >>= 1 //var2 >>= 1;
+	}
+
+	myvar1.width = var3 //this.width = var3;
+
+	var myArrParentEventCode []EventCode
+	for var4 := 0; var4 < len(var1); var4++ { //for(int var4 = 0; var4 < var1.length; ++var4) {
+		var myvarParentEventCode EventCode
+		var var5 EventCode = var1[var4] //EventCode var5 = var1[var4];
+		if var5 != nilVAREventCode {    //if (var5 != null) {
+			myvarParentEventCode = var5.setParentalContext(var4, var5) //var5.setParentalContext(var4, this);
+			if var5.itemType != -1 {                                   //if (var5.itemType != -1) {
+				(*(*EventType)(unsafe.Pointer(&var5))).computeItemPath() //((EventType)var5).computeItemPath();//(*(*EventCode)(unsafe.Pointer(&var23)))
+			}
+		}
+		myArrParentEventCode = append(myArrParentEventCode, myvarParentEventCode)
+	}
+
+	myvar1.headItem = var1[0]                                                     //this.headItem = var1[0];
+	a.myArrParentEventCode = append(a.myArrParentEventCode, myArrParentEventCode) //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+}
+
+///end ArrayEventCodeTuple.class///
 //FragmentGrammar.class//
 type FragmentGrammar struct {
 	m_fragmentElems  []int                //private final int[] m_fragmentElems;
@@ -2317,13 +2352,24 @@ func EventType3(var1 string, var2 string, var3 int, var4 int, var5 byte, var6 Ev
 	return x
 }
 
+func (e *EventType) computeItemPath() { //public final void computeItemPath() {
+	var var1 int = e.getDepth() //int var1 = this.getDepth();
+	var var2 int = 0            //int var2 = 0;
+
+	//for(Object var3 = this; var2 < var1; ++var2) {
+	//this.m_path[var1 - 1 - var2] = (EventCode)var3;
+	//var3 = ((EventCode)var3).parent;
+	//}
+
+}
+
 ///////EventCode.class/////////
 type EventCode struct {
 	ITEM_TUPLE             int //byte
 	EVENT_CODE_DEPTH_ONE   byte
 	EVENT_CODE_DEPTH_TWO   byte
 	EVENT_CODE_DEPTH_THREE byte
-	//EventCode parent = null;
+	//parent EventCode
 	position int
 	itemType byte
 }
@@ -2337,16 +2383,27 @@ var VAREventCode EventCode = EventCode{
 	position: -1,
 }
 
+var varParentEventCode EventCode
+
+var nilVAREventCode EventCode = EventCode{}
+
 func (e *EventCode) myEventCodeToString() string {
 	var var1 string = fmt.Sprintf("%d", e.ITEM_TUPLE)
 	var var2 string = fmt.Sprintf("%d", e.EVENT_CODE_DEPTH_ONE)
 	var var3 string = fmt.Sprintf("%d", e.EVENT_CODE_DEPTH_TWO)
 	var var4 string = fmt.Sprintf("%d", e.EVENT_CODE_DEPTH_THREE)
-	var var5 string = fmt.Sprintf("%d", e.position)
-	var var6 string = fmt.Sprintf("%d", e.itemType)
+	//var var5 string = fmt.Sprintf("%d", e.parent)
+	var var6 string = fmt.Sprintf("%d", e.position)
+	var var7 string = fmt.Sprintf("%d", e.itemType)
 	var str string
-	str = str + var1 + var2 + var3 + var4 + var5 + var6
+	str = str + var1 + var2 + var3 + var4 /*+ var5*/ + var6 + var7
 	return str
+}
+
+func (e *EventCode) setParentalContext(var1 int, var2 EventCode) EventCode { //public final void setParentalContext(int var1, EventCode var2) {
+	e.position = var1                        //this.position = var1;
+	var varParentEventCode1 EventCode = var2 //this.parent = var2;
+	return varParentEventCode1
 }
 
 /////end EventCode.class///////
@@ -3057,8 +3114,8 @@ func createEventTypeSchemaAttributeInvalid(var1 EventType, var2 EventTypeList) E
 	return newEventType //return new EventType(var1.uri, var1.name, var1.getURIId(), var1.getNameId(), (byte)3, var2, (byte)23, var1.subsequentGrammar);
 }
 
-func createEventTypeXsiType(var1 EventTypeList) { //private EventType createEventTypeXsiType(EventTypeList var1) {
-	//return new EventType("http://www.w3.org/2001/XMLSchema-instance", "type", 2, 1, (byte)2, var1, (byte)22, (IGrammar)null);
+func createEventTypeXsiType(var1 EventTypeList) EventType { //private EventType createEventTypeXsiType(EventTypeList var1) {
+	return thisEventType2("http://www.w3.org/2001/XMLSchema-instance", "type", 2, 1, byte(2), var1, 22 /*, (IGrammar)null*/) //return new EventType("http://www.w3.org/2001/XMLSchema-instance", "type", 2, 1, (byte)2, var1, (byte)22, (IGrammar)null);
 }
 
 ///end SchemaInformedGrammar.clas///
@@ -3598,86 +3655,3 @@ func main() {
 	var workgrammarCache GrammarCache
 
 }
-
-/*(bytes.Equal(g.m_schema.COOKIE, nilVAREXISchema.COOKIE)) &&
-(g.m_schema.NIL_NODE != nilVAREXISchema.NIL_NODE) &&
-(g.m_schema.NIL_VALUE != nilVAREXISchema.NIL_VALUE) &&
-(g.m_schema.EMPTY_STRING != nilVAREXISchema.EMPTY_STRING) &&
-(g.m_schema.NIL_GRAM != nilVAREXISchema.NIL_GRAM) &&
-(g.m_schema.EVENT_AT_WILDCARD != nilVAREXISchema.EVENT_AT_WILDCARD) &&
-(g.m_schema.EVENT_SE_WILDCARD != nilVAREXISchema.EVENT_SE_WILDCARD) &&
-(g.m_schema.EVENT_CH_UNTYPED != nilVAREXISchema.EVENT_CH_UNTYPED) &&
-(g.m_schema.EVENT_CH_TYPED != nilVAREXISchema.EVENT_CH_TYPED) &&
-(g.m_schema.MIN_EVENT_ID != nilVAREXISchema.MIN_EVENT_ID) &&
-(g.m_schema.EVENT_TYPE_AT != nilVAREXISchema.EVENT_TYPE_AT) &&
-(g.m_schema.EVENT_TYPE_SE != nilVAREXISchema.EVENT_TYPE_SE) &&
-(g.m_schema.EVENT_TYPE_AT_WILDCARD_NS != nilVAREXISchema.EVENT_TYPE_AT_WILDCARD_NS) &&
-(g.m_schema.EVENT_TYPE_SE_WILDCARD_NS != nilVAREXISchema.EVENT_TYPE_SE_WILDCARD_NS) &&
-(g.m_schema.TRUE_VALUE != nilVAREXISchema.TRUE_VALUE) &&
-(g.m_schema.FALSE_VALUE != nilVAREXISchema.FALSE_VALUE) &&
-(g.m_schema.UNBOUNDED_OCCURS != nilVAREXISchema.UNBOUNDED_OCCURS) &&
-(g.m_schema.CONSTRAINT_NONE != nilVAREXISchema.CONSTRAINT_NONE) &&
-(g.m_schema.CONSTRAINT_DEFAULT != nilVAREXISchema.CONSTRAINT_DEFAULT) &&
-(g.m_schema.CONSTRAINT_FIXED != nilVAREXISchema.CONSTRAINT_FIXED) &&
-(g.m_schema.WHITESPACE_PRESERVE != nilVAREXISchema.WHITESPACE_PRESERVE) &&
-(g.m_schema.WHITESPACE_REPLACE != nilVAREXISchema.WHITESPACE_REPLACE) &&
-(g.m_schema.WHITESPACE_COLLAPSE != nilVAREXISchema.WHITESPACE_COLLAPSE) &&
-(g.m_schema.VARIANT_STRING != nilVAREXISchema.VARIANT_STRING) &&
-(g.m_schema.VARIANT_FLOAT != nilVAREXISchema.VARIANT_FLOAT) &&
-(g.m_schema.VARIANT_DECIMAL != nilVAREXISchema.VARIANT_DECIMAL) &&
-(g.m_schema.VARIANT_INTEGER != nilVAREXISchema.VARIANT_INTEGER) &&
-(g.m_schema.VARIANT_INT != nilVAREXISchema.VARIANT_INT) &&
-(g.m_schema.VARIANT_LONG != nilVAREXISchema.VARIANT_LONG) &&
-(g.m_schema.VARIANT_DATETIME != nilVAREXISchema.VARIANT_DATETIME) &&
-(g.m_schema.VARIANT_DURATION != nilVAREXISchema.VARIANT_DURATION) &&
-(g.m_schema.VARIANT_BASE64 != nilVAREXISchema.VARIANT_BASE64) &&
-(g.m_schema.VARIANT_BOOLEAN != nilVAREXISchema.VARIANT_BOOLEAN) &&
-(g.m_schema.VARIANT_HEXBIN != nilVAREXISchema.VARIANT_HEXBIN) &&
-(g.m_schema.INTEGER_CODEC_DEFAULT != nilVAREXISchema.INTEGER_CODEC_DEFAULT) &&
-(g.m_schema.INTEGER_CODEC_NONNEGATIVE != nilVAREXISchema.INTEGER_CODEC_NONNEGATIVE) &&
-(g.m_schema.ANCESTRY_IDS != nilVAREXISchema.ANCESTRY_IDS) &&
-(g.m_schema.ELEMENT_NAMES != nilVAREXISchema.ELEMENT_NAMES) &&
-(g.m_schema.DEFAULT_TYPABLES != nilVAREXISchema.DEFAULT_TYPABLES) &&
-(g.m_schema.UR_SIMPLE_TYPE != nilVAREXISchema.UR_SIMPLE_TYPE) &&
-(g.m_schema.ATOMIC_SIMPLE_TYPE != nilVAREXISchema.ATOMIC_SIMPLE_TYPE) &&
-(g.m_schema.LIST_SIMPLE_TYPE != nilVAREXISchema.LIST_SIMPLE_TYPE) &&
-(g.m_schema.UNION_SIMPLE_TYPE != nilVAREXISchema.UNION_SIMPLE_TYPE) &&
-(g.m_schema.m_elems != nilVAREXISchema.m_elems) &&
-(g.m_schema.m_attrs != nilVAREXISchema.m_attrs) &&
-(g.m_schema.m_types != nilVAREXISchema.m_types) &&
-(g.m_schema.uris != nilVAREXISchema.uris) &&
-(g.m_schema.localNames != nilVAREXISchema.localNames) &&
-(g.m_schema.m_localNames != nilVAREXISchema.m_localNames) &&
-(g.m_schema.m_names != nilVAREXISchema.m_names) &&
-(g.m_schema.m_strings != nilVAREXISchema.m_strings) &&
-(g.m_schema.m_ints != nilVAREXISchema.m_ints) &&
-(g.m_schema.m_mantissas != nilVAREXISchema.m_mantissas) &&
-(g.m_schema.m_exponents != nilVAREXISchema.m_exponents) &&
-(g.m_schema.m_signs != nilVAREXISchema.m_signs) &&
-(g.m_schema.m_integralDigits != nilVAREXISchema.m_integralDigits) &&
-(g.m_schema.m_reverseFractionalDigits != nilVAREXISchema.m_reverseFractionalDigits) &&
-(g.m_schema.m_integers != nilVAREXISchema.m_integers) &&
-(g.m_schema.m_longs != nilVAREXISchema.m_longs) &&
-(g.m_schema.m_datetimes != nilVAREXISchema.m_datetimes) &&
-(g.m_schema.m_durations != nilVAREXISchema.m_durations) &&
-(g.m_schema.m_binaries != nilVAREXISchema.m_binaries) &&
-(g.m_schema.m_variantTypes != nilVAREXISchema.m_variantTypes) &&
-(g.m_schema.m_variants != nilVAREXISchema.m_variants) &&
-(g.m_schema.m_computedDatetimes != nilVAREXISchema.m_computedDatetimes) &&
-(g.m_schema.m_variantCharacters != nilVAREXISchema.m_variantCharacters) &&
-(g.m_schema.m_n_stypes != nilVAREXISchema.m_n_stypes) &&
-(g.m_schema.ancestryIds != nilVAREXISchema.ancestryIds) &&
-(g.m_schema.m_stypes_end != nilVAREXISchema.m_stypes_end) &&
-(g.m_schema.m_grammars != nilVAREXISchema.m_grammars) &&
-(g.m_schema.m_productions != nilVAREXISchema.m_productions) &&
-(g.m_schema.m_eventTypes != nilVAREXISchema.m_eventTypes) &&
-(g.m_schema.m_eventData != nilVAREXISchema.m_eventData) &&
-(g.m_schema.m_grammarCount != nilVAREXISchema.m_grammarCount) &&
-(g.m_schema.m_fragmentINodes != nilVAREXISchema.m_fragmentINodes) &&
-(g.m_schema.m_n_fragmentElems != nilVAREXISchema.m_n_fragmentElems) &&
-(g.m_schema.m_globalElementsDirectory != nilVAREXISchema.m_globalElementsDirectory) &&
-(g.m_schema.m_globalAttributesDirectory != nilVAREXISchema.m_globalAttributesDirectory) &&
-(g.m_schema.m_globalTypesDirectory != nilVAREXISchema.m_globalTypesDirectory) &&
-(g.m_schema.m_buitinTypes != nilVAREXISchema.m_buitinTypes) &&
-(g.m_schema.m_globalElems != nilVAREXISchema.m_globalElems) &&
-(g.m_schema.m_globalAttrs != nilVAREXISchema.m_globalAttrs) */
