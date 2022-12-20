@@ -520,17 +520,17 @@ var varBuiltinFragmentGrammar BuiltinFragmentGrammar = BuiltinFragmentGrammar{
 
 func (b *BuiltinFragmentGrammar) funcBuiltinFragmentGrammar(var1 GrammarCache) Grammar { //BuiltinFragmentGrammar(GrammarCache var1) {
 	//super((byte)1, var1);
-	var var2 int = var1.grammarOptions                                             //short var2 = var1.grammarOptions;
-	b.m_eventTypeLists = make([]EventTypeList, 2, 2)                               //this.m_eventTypeLists = new EventTypeList[2];
-	b.m_eventCodes = make([]EventCodeTuple, 2, 2)                                  //this.m_eventCodes = new EventCodeTuple[2];
-	var var3 ArrayEventTypeList                                                    //ArrayEventTypeList var3;
-	b.m_eventTypeLists[0] = var3                                                   //this.m_eventTypeLists[0] = var3 = new ArrayEventTypeList();
-	var var4 ArrayEventCodeTuple                                                   //ArrayEventCodeTuple var4;
-	b.m_eventCodes[0] = var4                                                       //this.m_eventCodes[0] = var4 = new ArrayEventCodeTuple();
-	var var5 []EventType = []EventType{EventTypeFactory.createStartDocument(var3)} //EventType[] var5 = new EventType[]{EventTypeFactory.createStartDocument(var3)};
-	var3.setItems(var5)                                                            //var3.setItems(var5);
-	var4.setItems([]EventType{var5[0]})                                            //var4.setItems(new EventType[]{var5[0]});
-	b.populateContentGrammar(var2)                                                 //this.populateContentGrammar(var2);
+	var var2 int = var1.grammarOptions                                                                  //short var2 = var1.grammarOptions;
+	b.m_eventTypeLists = make([]EventTypeList, 2, 2)                                                    //this.m_eventTypeLists = new EventTypeList[2];
+	b.m_eventCodes = make([]EventCodeTuple, 2, 2)                                                       //this.m_eventCodes = new EventCodeTuple[2];
+	var var3 ArrayEventTypeList                                                                         //ArrayEventTypeList var3;
+	b.m_eventTypeLists[0] = (*(*EventTypeList)(unsafe.Pointer(&var3)))                                  //var3     //this.m_eventTypeLists[0] = var3 = new ArrayEventTypeList();
+	var var4 ArrayEventCodeTuple                                                                        //ArrayEventCodeTuple var4;
+	b.m_eventCodes[0] = (*(*EventCodeTuple)(unsafe.Pointer(&var4)))                                     //var4     //this.m_eventCodes[0] = var4 = new ArrayEventCodeTuple();
+	var var5 []EventType = []EventType{createStartDocument((*(*EventTypeList)(unsafe.Pointer(&var3))))} //EventType[] var5 = new EventType[]{EventTypeFactory.createStartDocument(var3)};
+	var3.setItems(var5)                                                                                 //var3.setItems(var5);
+	var4.setItems((*(*([]EventCode))(unsafe.Pointer(&([]EventType{var5[0]})))))                         //var4.setItems(new EventType[]{var5[0]});
+	b.populateContentGrammar(var2)                                                                      //this.populateContentGrammar(var2);
 }
 
 ///end BuiltinFragmentGrammar.class//
@@ -2975,7 +2975,7 @@ func (e *EventCodeTuple) thisCreateEventCodeTuple(var1 []string, var2 int, var3 
 	if var22 {        //if (var22) {
 		var51[var52] = var23 // var51[var52++] = var23;
 		var52++
-		var44[var56] = (*(*EventCode)(unsafe.Pointer(&var23))) // var44[var56++] = var23;///полезная
+		var44[var56] = (*(*EventCode)(unsafe.Pointer(&var23))) // var44[var56++] = var23;///полезная///gjktpyfz
 		var56++
 	}
 
