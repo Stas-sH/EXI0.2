@@ -533,7 +533,104 @@ func (b *BuiltinFragmentGrammar) funcBuiltinFragmentGrammar(var1 GrammarCache) G
 	b.populateContentGrammar(var2)                                                                      //this.populateContentGrammar(var2);
 }
 
+func (b *BuiltinFragmentGrammar) populateContentGrammar(var1 int) { //private void populateContentGrammar(short var1) {
+	var var2 ReversedEventTypeList //ReversedEventTypeList var2 = new ReversedEventTypeList();
+	var var3 ReverseEventCodeTuple //ReverseEventCodeTuple var3 = new ReverseEventCodeTuple();
+	b.m_eventTypeLists[1] = var2   //this.m_eventTypeLists[1] = var2;
+	b.m_eventCodes[1] = var3       //this.m_eventCodes[1] = var3;
+	var var4 bool = hasCM(var1)    //boolean var4 = GrammarOptions.hasCM(var1);
+	var var5 bool = hasPI(var1)    //boolean var5 = GrammarOptions.hasPI(var1);
+	var var10 bool = false         //boolean var10 = false;
+	var var11 int = 0              //int var11 = 0;
+	var var9 EventType             //EventType var9;
+	if var5 {                      //if (var5) {
+		var9 = thisEventType1(byte(2), var2, 0 /*, (IGrammar)null*/) //var9 = new EventType((byte)2, var2, (byte)0, (IGrammar)null);
+		var2 = append(var2, var9)                                    //var2.add(var9);
+		var11++                                                      //++var11;
+		var10 = true                                                 //var10 = true;
+	} else {
+		//var9 = null;
+	}
+
+	var var8 EventType //EventType var8;
+	if var4 {          //if (var4) {
+		var8 = thisEventType1(byte(2), var2, 1 /*, (IGrammar)null*/) //var8 = new EventType((byte)2, var2, (byte)1, (IGrammar)null);
+		var2 = append(var2, var8)                                    //var2.add(var8);
+		var11++                                                      //++var11;
+		var10 = true                                                 //var10 = true;
+	} else {
+		//var8 = null;
+	}
+
+	var var7 EventType = createEndDocument(var2)                               //EventType var7 = EventTypeFactory.createEndDocument(var2);
+	var2 = append(var2, var7)                                                  //var2.add(var7);
+	var var6 EventType = thisEventType1(byte(1), var2, 5 /*, (IGrammar)null*/) //EventType var6 = new EventType((byte)1, var2, (byte)5, (IGrammar)null);
+	var2 = append(var2, var6)                                                  //var2.add(var6);
+	var var12 []EventCode                                                      //EventCode[] var12 = null;
+	var var13 ArrayEventCodeTuple                                              //ArrayEventCodeTuple var13 = null;
+	if var10 {                                                                 //if (var10) {
+		var12 = make([]EventCode, var11, var11) //var12 = new EventCode[var11];
+		//var13 = new ArrayEventCodeTuple();
+	}
+
+	var3.setInitialItems(var6, var7, var13) //var3.setInitialItems(var6, var7, var13);
+	if var10 {                              //if (var10) {
+		var var14 int = 0 //int var14 = 0;
+		if var4 {         //if (var4) {
+			var12[var14] = var8 //var12[var14++] = var8;
+			var14++
+		}
+
+		if var5 { //if (var5) {
+			var12[var14] = var9 //var12[var14++] = var9;
+			var14++
+		}
+
+		var13.setItems(var12) //var13.setItems(var12);
+	}
+
+}
+
 ///end BuiltinFragmentGrammar.class//
+//ReversedEventTypeList.class//
+type ReversedEventTypeList struct {
+	m_eventTypes                              //private final List<EventType> m_eventTypes = new ArrayList(16);
+	m_n_eventTypes                int         //private int m_n_eventTypes = 0;
+	hasDepthOneEE                 bool        //boolean hasDepthOneEE = false;
+	m_eventTypeEndElement         EventType   //private EventType m_eventTypeEndElement = null;
+	hasDepthOneCH                 bool        //boolean hasDepthOneCH = false;
+	m_eventTypeCharacters         EventType   //private EventType m_eventTypeCharacters = null;
+	m_namespaceDeclaration        EventType   //private EventType m_namespaceDeclaration;
+	m_attributeWildcardAnyUntyped EventType   //private EventType m_attributeWildcardAnyUntyped;
+	m_initial_n_eventTypes        int         //private int m_initial_n_eventTypes;
+	m_initial_n_attributes        int         //private int m_initial_n_attributes;
+	m_initialEventTypeEndElement  EventType   //private EventType m_initialEventTypeEndElement;
+	m_initialEventTypeCharacters  EventType   //private EventType m_initialEventTypeCharacters;
+	ATTRIBUTES_NONE               []EventType //private static final EventType[] ATTRIBUTES_NONE = new EventType[0];
+	m_attributes                  []EventType //private EventType[] m_attributes;
+	m_n_attributes                int         //private int m_n_attributes;
+}
+
+var varReversedEventTypeList ReversedEventTypeList = ReversedEventTypeList{
+	//m_eventTypes  ArrayList(16),
+	m_n_eventTypes:        0,
+	hasDepthOneEE:         false,
+	m_eventTypeEndElement: nilVAREventType,
+	hasDepthOneCH:         false,
+	m_eventTypeCharacters: nilVAREventType,
+	ATTRIBUTES_NONE:       make([]EventType, 0, 0),
+}
+
+//end ReversedEventTypeList.class//
+
+//ReverseEventCodeTuple.class//
+type ReverseEventCodeTuple struct {
+	m_initial_width      int //private int m_initial_width;
+	m_initial_itemsCount int //private int m_initial_itemsCount;
+}
+
+//end ReverseEventCodeTuple.class//
+
 //ArrayEventCodeTuple.class///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 type ArrayEventCodeTuple struct {
 	myArrParentEventCode [][]EventCode //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
