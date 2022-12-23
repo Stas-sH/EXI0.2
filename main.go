@@ -708,6 +708,64 @@ func (e *EventCodeTuple) setInitialItems(var1 EventType, var2 EventType, var3 Ev
 	e.headItem = e.eventCodes[0] //this.headItem = this.eventCodes[0];
 }
 
+func (e *EventCodeTuple) updateWidth() { //private void updateWidth() {
+	switch e.itemsCount { //switch(this.itemsCount) {
+	case 1: //case 1:
+		e.width = 0 //this.width = 0;
+		break       //break;
+	case 2: //case 2:
+		e.width = 1 //this.width = 1;
+		break       //break;
+	case 3: //case 3:
+	case 4: //case 4:
+		e.width = 2 //this.width = 2;
+		break       //break;
+	case 5: //case 5:
+	case 6: //case 6:
+	case 7: //case 7:
+	case 8: //case 8:
+		e.width = 3 //this.width = 3;
+		break       //break;
+	case 9: //case 9:
+	case 10: //case 10:
+	case 11: //case 11:
+	case 12: //case 12:
+	case 13: //case 13:
+	case 14: //case 14:
+	case 15: //case 15:
+	case 16: //case 16:
+		e.width = 4 //this.width = 4;
+		break       //break;
+	case 17: //case 17:
+	case 18: //case 18:
+	case 19: //case 19:
+	case 20: //case 20:
+	case 21: //case 21:
+	case 22: //case 22:
+	case 23: //case 23:
+	case 24: //case 24:
+	case 25: //case 25:
+	case 26: //case 26:
+	case 27: //case 27:
+	case 28: //case 28:
+	case 29: //case 29:
+	case 30: //case 30:
+	case 31: //case 31:
+	case 32: //case 32:
+		e.width = 5 //this.width = 5;
+		break       //break;
+	default: //default:
+		var var2 int = 0 //int var2 = 0;
+
+		for var1 := e.itemsCount - 1; var1 != 0; var2++ { //for(int var1 = this.itemsCount - 1; var1 != 0; ++var2) {
+			var1 >>= 1 //var1 >>= 1;
+		}
+
+		e.width = var2 //this.width = var2;
+	}
+
+}
+
 //end ReverseEventCodeTuple.class//
 
 //ArrayEventCodeTuple.class///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
