@@ -387,6 +387,51 @@ func myCopyArrEventType(arr1 []EventType, pos1 int, arr2 []EventType, pos2 int, 
 	return arr2
 }
 
+func myCopyArrEventCode(arr1 []EventCode, pos1 int, arr2 []EventCode, pos2 int, count int) []EventCode {
+	var err error
+	if count > len(arr1) {
+		err = errors.New("count>len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]EventCode, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	if pos1 >= len(arr1) {
+		err = errors.New("pos1>=len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]EventCode, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	if pos2 >= len(arr2) {
+		err = errors.New("pos1>=len(arr1)")
+	}
+	if err != nil {
+		fmt.Println("errors")
+		errorArr := make([]EventCode, len(arr2), len(arr2))
+		copy(arr2, errorArr)
+		return arr2
+	}
+
+	k := 0
+	j := pos1
+	for i := pos2; i < len(arr2); i++ {
+		arr2[i] = arr1[j]
+		j++
+		k++
+		if k == count {
+			break
+		}
+	}
+	return arr2
+}
+
 //////////////////////////////////////////Transmogrifier.clas////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////GrammarCache.class//////////////////////////////////////////////////////////////////////////////////
 var m_fragmentGrammar Grammar //fix problem
@@ -534,55 +579,55 @@ func (b *BuiltinFragmentGrammar) funcBuiltinFragmentGrammar(var1 GrammarCache) G
 }
 
 func (b *BuiltinFragmentGrammar) populateContentGrammar(var1 int) { //private void populateContentGrammar(short var1) {
-	var var2 ReversedEventTypeList //ReversedEventTypeList var2 = new ReversedEventTypeList();
-	var var3 ReverseEventCodeTuple //ReverseEventCodeTuple var3 = new ReverseEventCodeTuple();
-	b.m_eventTypeLists[1] = var2   //this.m_eventTypeLists[1] = var2;
-	b.m_eventCodes[1] = var3       //this.m_eventCodes[1] = var3;
-	var var4 bool = hasCM(var1)    //boolean var4 = GrammarOptions.hasCM(var1);
-	var var5 bool = hasPI(var1)    //boolean var5 = GrammarOptions.hasPI(var1);
-	var var10 bool = false         //boolean var10 = false;
-	var var11 int = 0              //int var11 = 0;
-	var var9 EventType             //EventType var9;
-	if var5 {                      //if (var5) {
-		var9 = thisEventType1(byte(2), var2, 0 /*, (IGrammar)null*/) //var9 = new EventType((byte)2, var2, (byte)0, (IGrammar)null);
-		var2 = append(var2, var9)                                    //var2.add(var9);
-		var11++                                                      //++var11;
-		var10 = true                                                 //var10 = true;
+	var var2 ReversedEventTypeList                                     //ReversedEventTypeList var2 = new ReversedEventTypeList();
+	var var3 ReverseEventCodeTuple                                     //ReverseEventCodeTuple var3 = new ReverseEventCodeTuple();
+	b.m_eventTypeLists[1] = (*(*EventTypeList)(unsafe.Pointer(&var2))) //this.m_eventTypeLists[1] = var2;
+	b.m_eventCodes[1] = (*(*EventCodeTuple)(unsafe.Pointer(&var3)))    //this.m_eventCodes[1] = var3;
+	var var4 bool = hasCM(var1)                                        //boolean var4 = GrammarOptions.hasCM(var1);
+	var var5 bool = hasPI(var1)                                        //boolean var5 = GrammarOptions.hasPI(var1);
+	var var10 bool = false                                             //boolean var10 = false;
+	var var11 int = 0                                                  //int var11 = 0;
+	var var9 EventType                                                 //EventType var9;
+	if var5 {                                                          //if (var5) {
+		var9 = thisEventType1(byte(2), (*(*EventTypeList)(unsafe.Pointer(&var2))), 0 /*, (IGrammar)null*/) //var9 = new EventType((byte)2, var2, (byte)0, (IGrammar)null);
+		var2 = append(var2, var9)                                                                          //var2.add(var9);
+		var11++                                                                                            //++var11;
+		var10 = true                                                                                       //var10 = true;
 	} else {
 		//var9 = null;
 	}
 
 	var var8 EventType //EventType var8;
 	if var4 {          //if (var4) {
-		var8 = thisEventType1(byte(2), var2, 1 /*, (IGrammar)null*/) //var8 = new EventType((byte)2, var2, (byte)1, (IGrammar)null);
-		var2 = append(var2, var8)                                    //var2.add(var8);
-		var11++                                                      //++var11;
-		var10 = true                                                 //var10 = true;
+		var8 = thisEventType1(byte(2), (*(*EventTypeList)(unsafe.Pointer(&var2))), 1 /*, (IGrammar)null*/) //var8 = new EventType((byte)2, var2, (byte)1, (IGrammar)null);
+		var2 = append(var2, var8)                                                                          //var2.add(var8);
+		var11++                                                                                            //++var11;
+		var10 = true                                                                                       //var10 = true;
 	} else {
 		//var8 = null;
 	}
 
-	var var7 EventType = createEndDocument(var2)                               //EventType var7 = EventTypeFactory.createEndDocument(var2);
-	var2 = append(var2, var7)                                                  //var2.add(var7);
-	var var6 EventType = thisEventType1(byte(1), var2, 5 /*, (IGrammar)null*/) //EventType var6 = new EventType((byte)1, var2, (byte)5, (IGrammar)null);
-	var2 = append(var2, var6)                                                  //var2.add(var6);
-	var var12 []EventCode                                                      //EventCode[] var12 = null;
-	var var13 ArrayEventCodeTuple                                              //ArrayEventCodeTuple var13 = null;
-	if var10 {                                                                 //if (var10) {
+	var var7 EventType = createEndDocument((*(*EventTypeList)(unsafe.Pointer(&var2))))                               //EventType var7 = EventTypeFactory.createEndDocument(var2);
+	var2 = append(var2, var7)                                                                                        //var2.add(var7);
+	var var6 EventType = thisEventType1(byte(1), (*(*EventTypeList)(unsafe.Pointer(&var2))), 5 /*, (IGrammar)null*/) //EventType var6 = new EventType((byte)1, var2, (byte)5, (IGrammar)null);
+	var2 = append(var2, var6)                                                                                        //var2.add(var6);
+	var var12 []EventCode                                                                                            //EventCode[] var12 = null;
+	var var13 ArrayEventCodeTuple                                                                                    //ArrayEventCodeTuple var13 = null;
+	if var10 {                                                                                                       //if (var10) {
 		var12 = make([]EventCode, var11, var11) //var12 = new EventCode[var11];
 		//var13 = new ArrayEventCodeTuple();
 	}
 
-	var3.setInitialItems(var6, var7, var13) //var3.setInitialItems(var6, var7, var13);
-	if var10 {                              //if (var10) {
+	(*(*EventCodeTuple)(unsafe.Pointer(&var3))).setInitialItems(var6, var7, (*(*EventCode)(unsafe.Pointer(&var13)))) //var3.setInitialItems(var6, var7, var13);
+	if var10 {                                                                                                       //if (var10) {
 		var var14 int = 0 //int var14 = 0;
 		if var4 {         //if (var4) {
-			var12[var14] = var8 //var12[var14++] = var8;
+			var12[var14] = (*(*EventCode)(unsafe.Pointer(&var8))) //var12[var14++] = var8;
 			var14++
 		}
 
 		if var5 { //if (var5) {
-			var12[var14] = var9 //var12[var14++] = var9;
+			var12[var14] = (*(*EventCode)(unsafe.Pointer(&var9))) //var12[var14++] = var9;
 			var14++
 		}
 
@@ -627,6 +672,40 @@ var varReversedEventTypeList ReversedEventTypeList = ReversedEventTypeList{
 type ReverseEventCodeTuple struct {
 	m_initial_width      int //private int m_initial_width;
 	m_initial_itemsCount int //private int m_initial_itemsCount;
+}
+
+func (e *EventCodeTuple) setInitialItems(var1 EventType, var2 EventType, var3 EventCode) { //void setInitialItems(EventType var1, EventType var2, EventCode var3) {
+	//assert this.itemsCount == 0 && var1.itemType == 5 && var2.itemType == 4;
+
+	var var4 []EventCode         //EventCode[] var4;
+	if var3 != nilVAREventCode { //if (var3 != null) {
+		if e.itemsCount == len(e.eventCodes) { //if (this.itemsCount == this.eventCodes.length) {
+			var4 = make([]EventCode, e.itemsCount+16, e.itemsCount+16)             //var4 = new EventCode[this.itemsCount + 16];
+			copy(myCopyArrEventCode(e.eventCodes, 0, var4, 0, e.itemsCount), var4) //System.arraycopy(this.eventCodes, 0, var4, 0, this.itemsCount);
+			e.eventCodes = var4                                                    //this.eventCodes = var4;
+		}
+
+		e.eventCodes[e.itemsCount] = var3                                          //this.eventCodes[this.itemsCount] = var3;
+		var3.setParentalContext(e.itemsCount, (*(*EventCode)(unsafe.Pointer(&e)))) //var3.setParentalContext(this.itemsCount++, this);
+		e.itemsCount++
+	}
+
+	if e.itemsCount > len(e.eventCodes)-2 { //if (this.itemsCount > this.eventCodes.length - 2) {
+		var4 = make([]EventCode, e.itemsCount+16, e.itemsCount+16)             //var4 = new EventCode[this.itemsCount + 16];
+		copy(myCopyArrEventCode(e.eventCodes, 0, var4, 0, e.itemsCount), var4) //System.arraycopy(this.eventCodes, 0, var4, 0, this.itemsCount);
+		e.eventCodes = var4                                                    //this.eventCodes = var4;
+	}
+
+	e.eventCodes[e.itemsCount] = (*(*EventCode)(unsafe.Pointer(&var2)))                                          //this.eventCodes[this.itemsCount] = var2;
+	e.eventCodes[e.itemsCount+1] = (*(*EventCode)(unsafe.Pointer(&var1)))                                        //this.eventCodes[this.itemsCount + 1] = var1;
+	(*(*EventCode)(unsafe.Pointer(&var2))).setParentalContext(e.itemsCount, (*(*EventCode)(unsafe.Pointer(&e)))) //var2.setParentalContext(this.itemsCount++, this);
+	e.itemsCount++
+	(*(*EventCode)(unsafe.Pointer(&var1))).setParentalContext(e.itemsCount, (*(*EventCode)(unsafe.Pointer(&e)))) //var1.setParentalContext(this.itemsCount++, this);
+	e.itemsCount++
+	e.updateWidth()              //this.updateWidth();
+	var2.computeItemPath()       //var2.computeItemPath();
+	var1.computeItemPath()       //var1.computeItemPath();
+	e.headItem = e.eventCodes[0] //this.headItem = this.eventCodes[0];
 }
 
 //end ReverseEventCodeTuple.class//
